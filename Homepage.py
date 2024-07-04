@@ -97,14 +97,11 @@ def vote():
         for i in variables:
             responses[i["variable_name"]] = st.text_input(i["variable_name"], barcode , key=i["variable_name"])
         
-        responses['barcode']=barcode
-
-        st.write(responses)
-
-        
+               
         submitted = st.form_submit_button("Submit form")
 
     if submitted:
+        responses['barcode']=barcode 
         st.write(responses)
 
 
