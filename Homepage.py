@@ -109,7 +109,9 @@ def vote(master_data_dict):
     if submitted:
 
         responses['barcode']=st.session_state.barcode
-        st.write(responses)
+        master_data_dict.append(responses)
+
+        st.write(master_data_dict)
 
         st.session_state['barcode'] = barcode
 
