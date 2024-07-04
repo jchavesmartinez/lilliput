@@ -84,6 +84,7 @@ def generate_barcode(number):
     
     # Get the barcode number
     barcode_number = barcode.get_fullcode()
+    st.write(barcode_number)
     
     # Return the filename and the barcode number
     return "barcode.png", barcode_number
