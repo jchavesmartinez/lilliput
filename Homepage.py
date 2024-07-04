@@ -100,7 +100,8 @@ def vote(master_data_dict):
 
         # Iterate over variables and create a text input for each
         for i in variables:
-            responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
+            if i['variable_type']=='Independant':
+                responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
         
                
         submitted = st.form_submit_button("Submit form", use_container_width=True)
