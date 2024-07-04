@@ -80,13 +80,13 @@ def generate_barcode(number):
 @st.experimental_dialog("New experiment")
 def vote():
 
-    timestamp = int(time.time())
-    timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-    barcode_path, barcode = generate_barcode(timestamp_str)
-    barcode = str(barcode).split("'")[0]
-    image = Image.open(barcode_path)
-
     with st.form("my_form", clear_on_submit=True):
+        timestamp = int(time.time())
+        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+        barcode_path, barcode = generate_barcode(timestamp_str)
+        barcode = str(barcode).split("'")[0]
+        image = Image.open(barcode_path)
+
         st.image(image, caption='Generated Barcode')
         
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
@@ -102,12 +102,6 @@ def vote():
     if submitted:
         responses['barcode']=barcode
         st.write(responses)
-
-        timestamp = int(time.time())
-        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode = generate_barcode(timestamp_str)
-        barcode = str(barcode).split("'")[0]
-        image = Image.open(barcode_path)
 
 
 
