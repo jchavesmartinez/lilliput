@@ -65,9 +65,23 @@ def read_file_googledrive(credentials,file_id):
     
     return text_content
 
+st.title("DevStack SplitWise")
 
-variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+description='''### Description:
 
-st.write(variables)
+SplitWise streamlines internal expense allocation, providing a structured approach to dividing costs among team members or departments. Designed to foster fairness and efficiency, SplitWise simplifies the process of managing shared expenses within your organization.
 
+SplitWise allows you to effortlessly distribute expenses for various activities such as office supplies, team lunches, or corporate events. By creating groups and logging expenses, SplitWise ensures that financial responsibilities are equitably distributed among participants.
+
+**Key Features:**
+- **Efficient Expense Tracking:** Easily record and categorize expenses, facilitating accurate tracking and accountability.
+- **Equitable Distribution:** SplitWise employs robust algorithms to calculate each participant's share, promoting fairness and transparency.
+- **Timely Updates:** Receive prompt notifications and updates on expense entries and adjustments, enabling timely reconciliation.
+- **Confidential Collaboration:** SplitWise prioritizes data security, offering a secure platform for internal expense sharing among trusted team members.
+- **Flexible Payment Methods:** Seamlessly settle expenses using preferred payment channels, ensuring convenience and flexibility.
+
+SplitWise enhances internal financial management by providing a structured framework for expense allocation, allowing teams to focus on their core objectives without undue administrative burden. Experience the efficiency of SplitWise for equitable expense sharing within your organization today.'''
+
+
+st.markdown(description)
 
