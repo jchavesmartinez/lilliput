@@ -88,6 +88,9 @@ def vote():
         image = Image.open(barcode_path)
 
         st.image(image, caption='Generated Barcode')
+
+        if 'barcode' not in st.session_state:
+            st.session_state['barcode'] = barcode
         
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
@@ -101,7 +104,9 @@ def vote():
         submitted = st.form_submit_button("Submit form")
 
     if submitted:
-        st.write(barcode)
+        #st.write(barcode)
+        st.write(st.session_state.barcode)
+
 
 
 
