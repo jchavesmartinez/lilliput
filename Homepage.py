@@ -75,7 +75,8 @@ def generate_barcode(number):
     number = str(number).zfill(12)
     barcode = EAN13(number, writer=ImageWriter())
     barcode.save("barcode")
-    return "barcode.png" , barcode
+    barcode_number = str(barcode).split("'")[1]
+    return "barcode.png" , barcode_number
 
 @st.experimental_dialog("New experiment")
 def vote(barcode_image, barcode):
