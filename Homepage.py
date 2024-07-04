@@ -17,6 +17,7 @@ import locale
 from barcode import EAN13
 from barcode.writer import ImageWriter
 from PIL import Image
+import time
 
 
 #st.cache_data.clear()
@@ -68,6 +69,18 @@ def read_file_googledrive(credentials,file_id):
         text_content=[]
     
     return text_content
+
+
+
+
+
+
+
+
+
+
+
+
 
 st.title("Lilliput Inventory Management")
 
@@ -145,13 +158,15 @@ def generate_barcode(number):
 
 st.title("Barcode Generator")
 
-number = st.text_input("Enter a 12-digit number for the barcode")
-
 if st.button("Generate Barcode"):
-    if len(number) == 12 and number.isdigit():
-        barcode_path = generate_barcode(number)
+    # Generate a 12-digit timestamp
+    timestamp = int(time.time())
+    timestamp_str = str(timestamp)[-12:]  # Get the last 12 digits of the timestamp
+
+    if len(timestamp_str) == 12:
+        barcode_path = generate_barcode(timestamp_str)
         image = Image.open(barcode_path)
         st.image(image, caption='Generated Barcode')
     else:
-        st.error("Please enter a valid 12-digit number.")
+        st.error("Error generating a valid 12-digit timestamp.")
 
