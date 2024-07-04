@@ -80,7 +80,30 @@ def generate_barcode(number):
 @st.experimental_dialog("New experiment")
 def vote():
 
-    with st.form("my_form", clear_on_submit=True):
+    # with st.form("my_form", clear_on_submit=True):
+    #     timestamp = int(time.time())
+    #     timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+    #     barcode_path, barcode = generate_barcode(timestamp_str)
+    #     barcode = str(barcode).split("'")[0]
+    #     image = Image.open(barcode_path)
+
+    #     st.image(image, caption='Generated Barcode')
+        
+    #     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+
+    #     responses = {}
+
+    #     # Iterate over variables and create a text input for each
+    #     for i in variables:
+    #         responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
+        
+               
+    #     submitted = st.form_submit_button("Submit form")
+
+    # if submitted:
+    #     responses['barcode']=barcode 
+    #     st.write(responses)
+
         timestamp = int(time.time())
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
         barcode_path, barcode = generate_barcode(timestamp_str)
@@ -97,12 +120,11 @@ def vote():
         for i in variables:
             responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
         
-               
-        submitted = st.form_submit_button("Submit form")
 
-    if submitted:
-        responses['barcode']=barcode 
-        st.write(responses)
+
+
+
+
 
 
 
