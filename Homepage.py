@@ -75,7 +75,7 @@ def generate_barcode(number):
     number = str(number).zfill(12)
     barcode = EAN13(number, writer=ImageWriter())
     barcode.save("barcode")
-    st.write(number)
+    st.write(barcode)
     return "barcode.png"
 
 @st.experimental_dialog("New experiment")
