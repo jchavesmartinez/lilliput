@@ -92,6 +92,7 @@ def vote(barcode_image, barcode):
 
     if st.button("Submit"):
         st.write(barcode)
+        st.rerun()
 
 #---------------------------- Codigo general --------------------------------
 
