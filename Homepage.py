@@ -94,7 +94,7 @@ st.markdown("---")
 @st.experimental_dialog("Cast your vote")
 def vote(item):
 
-    vairabless = read_file_googledrive(credentials,file_id)
+    vairabless = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
     for i in variables:
         st.write(i)
