@@ -86,7 +86,7 @@ def vote():
     barcode = str(barcode).split("'")[0]
     image = Image.open(barcode_path)
 
-    with st.form("my_form"):
+    with st.form("my_form", clear_on_submit=True):
         st.image(image, caption='Generated Barcode')
         
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
