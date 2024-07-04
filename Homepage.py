@@ -97,7 +97,7 @@ def vote(item):
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
     for i in variables:
-        st.write(i)
+        st.write(i["variable_name"])
 
 
 
