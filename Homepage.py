@@ -91,7 +91,8 @@ def vote(barcode_image, barcode):
         responses[i["variable_name"]] = st.text_input(i["variable_name"], key=i["variable_name"])
 
     if st.button("Submit"):
-        st.write(barcode)
+        responses['Barcode']
+        st.write(responses)
         
 
 #---------------------------- Codigo general --------------------------------
