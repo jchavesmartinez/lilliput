@@ -178,6 +178,8 @@ st.markdown("---")
 if st.button("Insert a new value", use_container_width=True):
     try:
         st.write(st.session_state)
+        for key in st.session_state.keys():
+            del st.session_state[key]
     except:
         st.write("no hay nada")
     vote()
