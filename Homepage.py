@@ -14,6 +14,10 @@ import plotly.express as px
 import altair as alt
 import numpy as np
 import locale
+from barcode import EAN13
+from barcode.writer import ImageWriter
+from PIL import Image
+
 
 #st.cache_data.clear()
 st.set_page_config(
