@@ -162,6 +162,7 @@ if st.button("Generate Barcode"):
     # Generate a 12-digit timestamp
     timestamp = int(time.time())
     timestamp_str = str(timestamp)[-12:]  # Get the last 12 digits of the timestamp
+    st.write(timestamp_str)
 
     if len(timestamp_str) == 12:
         barcode_path = generate_barcode(timestamp_str)
