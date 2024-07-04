@@ -66,5 +66,5 @@ def read_file_googledrive(credentials,file_id):
     return text_content
 
 
-tab1, tab2 = st.tabs(["📈 Chart", "🗃 Data"])
+tab1, tab2 = st.tabs(["📈 Chart", "🗃 Dataa"])
 
