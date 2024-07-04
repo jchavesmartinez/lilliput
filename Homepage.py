@@ -18,6 +18,8 @@ from barcode import EAN13
 from barcode.writer import ImageWriter
 from PIL import Image
 import time
+from barcode import EAN13
+from barcode.writer import ImageWriter
 
 
 #st.cache_data.clear()
