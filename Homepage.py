@@ -219,7 +219,7 @@ if st.button("Insert a new value", use_container_width=True):
 
 
 
-edited_df = st.data_editor(df)
+edited_df = st.data_editor(master_data_df)
 
 
 
