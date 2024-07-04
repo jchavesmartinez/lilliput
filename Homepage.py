@@ -88,7 +88,7 @@ def vote(barcode_image, barcode):
 
     # Iterate over variables and create a text input for each
     for i in variables:
-        responses[i["variable_name"]] = st.text_input(i["variable_name"], key=i["variable_name"],0)
+        responses[i["variable_name"]] = st.text_input(i["variable_name"],0 , key=i["variable_name"])
 
     if st.button("Submit"):
         responses['Barcode']=barcode
