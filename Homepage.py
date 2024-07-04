@@ -103,6 +103,12 @@ def vote():
         responses['barcode']=barcode
         st.write(responses)
 
+        timestamp = int(time.time())
+        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+        barcode_path, barcode = generate_barcode(timestamp_str)
+        barcode = str(barcode).split("'")[0]
+        image = Image.open(barcode_path)
+
 
 
 
