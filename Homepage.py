@@ -80,12 +80,12 @@ def generate_barcode(number):
     barcode = EAN13(number, writer=ImageWriter())
     
     # Save the barcode image (optional)
-    barcode.save("barcode")
+    barcode.save("barcode.png")
     
-    # Extract the barcode number from the barcode object
-    barcode_number = str(barcode).split("'")[1]
+    # Get the barcode number
+    barcode_number = barcode.get_fullcode()
     
-    # Return both the filename and the barcode number
+    # Return the filename and the barcode number
     return "barcode.png", barcode_number
 
 @st.experimental_dialog("New experiment")
