@@ -70,9 +70,26 @@ def read_file_googledrive(credentials,file_id):
     
     return text_content
 
+def generate_barcode(number):
+    # Ensure the number is a 12-digit string
+    number = str(number).zfill(12)
+    barcode = EAN13(number, writer=ImageWriter())
+    barcode.save("barcode")
+    return "barcode.png"
 
+#@st.experimental_dialog("Cast your vote")
+def vote(item):
 
+    variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
+    responses = {}
+
+    # Iterate over variables and create a text input for each
+    for i in variables:
+        responses[i["variable_name"]] = st.text_input(i["variable_name"], key=i["variable_name"])
+
+    if st.button("Submit"):
+        st.write(responses)
 
 
 
@@ -128,19 +145,7 @@ st.markdown("---")
 
 
 
-@st.experimental_dialog("Cast your vote")
-def vote(item):
 
-    variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
-
-    responses = {}
-
-    # Iterate over variables and create a text input for each
-    for i in variables:
-        responses[i["variable_name"]] = st.text_input(i["variable_name"], key=i["variable_name"])
-
-    if st.button("Submit"):
-        st.write(responses)
 
 
 if "vote" not in st.session_state:
@@ -148,13 +153,6 @@ if "vote" not in st.session_state:
         vote("A")
 
 
-# Function to generate a barcode
-def generate_barcode(number):
-    # Ensure the number is a 12-digit string
-    number = str(number).zfill(12)
-    barcode = EAN13(number, writer=ImageWriter())
-    barcode.save("barcode")
-    return "barcode.png"
 
 st.title("Barcode Generator")
 
