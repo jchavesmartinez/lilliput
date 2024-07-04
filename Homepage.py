@@ -203,7 +203,8 @@ st.markdown(description)
 
 st.markdown("---")
 
-master_data = read_file_googledrive(credentials,'1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU')
+master_data_dict = read_file_googledrive(credentials,'1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU')
+master_data_df = pd.DataFrame(master_data_dict)
 
 
 
@@ -218,7 +219,7 @@ if st.button("Insert a new value", use_container_width=True):
 
 
 
-st.write(master_data)
+st.write(master_data_df)
 
 
 
