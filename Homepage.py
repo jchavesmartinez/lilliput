@@ -93,11 +93,7 @@ def vote(item):
 
 
 
-
-
-
-
-
+#---------------------------- Codigo general --------------------------------
 
 st.title("Lilliput Inventory Management")
 
