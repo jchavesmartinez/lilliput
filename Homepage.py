@@ -98,6 +98,7 @@ def vote(item):
 
     for i in variables:
         st.write(i["variable_name"])
+        st.text_input(i["variable_name"], "Life of Brian")
 
 
 
