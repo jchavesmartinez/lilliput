@@ -78,7 +78,7 @@ def generate_barcode(number):
     return "barcode.png"
 
 @st.experimental_dialog("New experiment")
-def vote(barcode):
+def vote(barcode_image, barcode):
 
     st.image(image, caption='Generated Barcode')
     
@@ -91,9 +91,7 @@ def vote(barcode):
         responses[i["variable_name"]] = st.text_input(i["variable_name"], key=i["variable_name"])
 
     if st.button("Submit"):
-        st.write(responses)
-
-
+        st.write(barcode)
 
 #---------------------------- Codigo general --------------------------------
 
@@ -147,8 +145,8 @@ if "vote" not in st.session_state:
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
         barcode_path = generate_barcode(timestamp_str)
         image = Image.open(barcode_path)
-        
-        vote(image)
+
+        vote(image, timestamp_str)
 
     
 
