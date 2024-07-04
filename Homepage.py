@@ -97,10 +97,10 @@ def vote(item):
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
     for i in variables:
-        st.text_input(i["variable_name"], 0, key=i["variable_name"])
+        respuestas = st.text_input(i["variable_name"], 0, key=i["variable_name"])
 
     if st.button("Submit"):
-        
+        st.write(respuestas)
         st.rerun()
 
 if "vote" not in st.session_state:
