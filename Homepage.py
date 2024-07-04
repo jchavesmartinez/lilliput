@@ -101,7 +101,7 @@ def vote(item):
 
     if st.button("Submit"):
         st.write(respuestas)
-        st.rerun()
+        #st.rerun()
 
 if "vote" not in st.session_state:
     if st.button("Insert a new value", use_container_width=True):
