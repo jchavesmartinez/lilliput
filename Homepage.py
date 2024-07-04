@@ -92,6 +92,9 @@ def vote():
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
         
+        else:
+            st.session_state['barcode'] = barcode
+        
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
         responses = {}
