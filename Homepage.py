@@ -102,7 +102,8 @@ def vote():
         submitted = st.form_submit_button("Submit form")
 
     if submitted:
-        st.write(barcode)
+        responses['barcode']=barcode
+        st.write(responses)
 
 
 
