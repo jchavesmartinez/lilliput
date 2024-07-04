@@ -72,12 +72,11 @@ def read_file_googledrive(credentials,file_id):
 st.title("Lilliput Inventory Management")
 
 description="""
-# Inventory Module Description
 
-## Overview
+### Overview
 The Inventory Module streamlines tracking and managing experiments in our chemical lab. Each experiment is tagged with a unique barcode containing key information about its conditions and parameters.
 
-## Key Features
+### Key Features
 
 1. **Barcode Generation:**
    - Automatically generate and assign unique barcodes to experiments.
@@ -99,14 +98,14 @@ The Inventory Module streamlines tracking and managing experiments in our chemic
 6. **Reporting and Analysis:**
    - Generate reports and analyze experiment trends and patterns.
 
-## Benefits
+### Benefits
 
 - **Accuracy:** Reduces manual errors and ensures precise data tracking.
 - **Efficiency:** Streamlines documentation and retrieval processes.
 - **Organization:** Centralized storage improves lab management.
 - **Insights:** Supports data analysis for research advancements.
 
-## Conclusion
+### Conclusion
 The Inventory Module leverages barcode technology to manage experimental data efficiently, ensuring quick access to critical information and supporting our commitment to research excellence.
 """
 
