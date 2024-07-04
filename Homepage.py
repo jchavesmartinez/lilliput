@@ -147,6 +147,7 @@ if st.button("Insert a new value", use_container_width=True):
     timestamp = int(time.time())
     timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
     barcode_path, barcode = generate_barcode(timestamp_str)
+    barcode = str(barcode).split("'")[1]
     image = Image.open(barcode_path)
 
     vote(image, barcode)
