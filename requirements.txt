@@ -1,16 +1,1 @@
-pymongo
-dnspython
-harperdb
 streamlit
-plotly
-scipy
-streamlit_dynamic_filters
-gspread
-requests
-google-auth
-google-api-python-client
-google-auth-httplib2
-PyDrive
-selenium
-webdriver-manager
-seleniumbase
