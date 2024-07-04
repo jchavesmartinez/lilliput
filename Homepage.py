@@ -177,11 +177,9 @@ st.markdown("---")
 #if "vote" not in st.session_state:
 if st.button("Insert a new value", use_container_width=True):
     try:
-        
         del st.session_state['barcode']
-
     except:
-        st.write('error')
+        print("nothing")
     
     vote()
 
