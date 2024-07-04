@@ -87,8 +87,6 @@ def vote():
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
 
-        st.session_state.vote = {"barcode": barcode}
-
         st.image(image, caption='Generated Barcode')
         
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
