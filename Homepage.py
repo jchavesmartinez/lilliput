@@ -105,8 +105,6 @@ The Inventory Module streamlines tracking and managing experiments in our chemic
 - **Organization:** Centralized storage improves lab management.
 - **Insights:** Supports data analysis for research advancements.
 
-### Conclusion
-The Inventory Module leverages barcode technology to manage experimental data efficiently, ensuring quick access to critical information and supporting our commitment to research excellence.
 """
 
 st.markdown(description)
