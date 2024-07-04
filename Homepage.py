@@ -100,7 +100,7 @@ def vote():
         submitted = st.form_submit_button("Submit form")
 
     if submitted:
-        st.success("Yay!")
+        st.write(responses)
 
 
 
