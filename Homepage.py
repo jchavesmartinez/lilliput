@@ -158,8 +158,6 @@ if "vote" not in st.session_state:
 
 st.title("Barcode Generator")
 
-if st.button("Generate Barcode"):
-    # Generate a 10-digit timestamp
     
 
 
