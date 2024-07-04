@@ -142,14 +142,14 @@ st.markdown(description)
 st.markdown("---")
 
 
-if "vote" not in st.session_state:
-    if st.button("Insert a new value", use_container_width=True):
-        timestamp = int(time.time())
-        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path = generate_barcode(timestamp_str)
-        image = Image.open(barcode_path)
+#if "vote" not in st.session_state:
+if st.button("Insert a new value", use_container_width=True):
+    timestamp = int(time.time())
+    timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+    barcode_path = generate_barcode(timestamp_str)
+    image = Image.open(barcode_path)
 
-        vote(image, timestamp_str)
+    vote(image, timestamp_str)
 
     
 
