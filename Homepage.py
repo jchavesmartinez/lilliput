@@ -75,8 +75,7 @@ def generate_barcode(number):
     number = str(number).zfill(12)
     barcode = EAN13(number, writer=ImageWriter())
     barcode.save("barcode")
-    st.write(barcode)
-    return "barcode.png"
+    return "barcode.png" , barcode
 
 @st.experimental_dialog("New experiment")
 def vote(barcode_image, barcode):
@@ -147,10 +146,10 @@ st.markdown("---")
 if st.button("Insert a new value", use_container_width=True):
     timestamp = int(time.time())
     timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-    barcode_path = generate_barcode(timestamp_str)
+    barcode_path, barcode = generate_barcode(timestamp_str)
     image = Image.open(barcode_path)
 
-    vote(image, timestamp_str)
+    vote(image, barcode)
 
     
 
