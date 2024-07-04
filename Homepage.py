@@ -95,6 +95,7 @@ def vote(barcode_image, barcode):
 
     if submitted:
         st.success("Yay!")
+        st.rerun()
 
         
 
