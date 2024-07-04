@@ -97,7 +97,7 @@ def vote():
         for i in variables:
             responses[i["variable_name"]] = st.text_input(i["variable_name"],0 , key=i["variable_name"])
         
-        submitted = st.form_submit_button("Submit form", clear_on_submit=True)
+        submitted = st.form_submit_button("Submit form")
 
     if submitted:
         st.success("Yay!")
