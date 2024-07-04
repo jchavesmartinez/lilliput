@@ -18,8 +18,6 @@ from barcode import EAN13
 from barcode.writer import ImageWriter
 from PIL import Image
 import time
-from barcode import EAN13
-from barcode.writer import ImageWriter
 
 
 #st.cache_data.clear()
@@ -75,19 +73,9 @@ def read_file_googledrive(credentials,file_id):
 def generate_barcode(number):
     # Ensure the number is a 12-digit string
     number = str(number).zfill(12)
-    
-    # Generate the barcode
     barcode = EAN13(number, writer=ImageWriter())
-    
-    # Save the barcode image (optional)
-    barcode.save("barcode.png")
-    
-    # Get the barcode number
-    barcode_number = barcode.get_fullcode()
-    st.write(barcode_number)
-    
-    # Return the filename and the barcode number
-    return "barcode.png", barcode_number
+    barcode.save("barcode")
+    return "barcode.png" , barcode
 
 @st.experimental_dialog("New experiment")
 def vote(barcode_image, barcode):
