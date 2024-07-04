@@ -73,10 +73,18 @@ def read_file_googledrive(credentials,file_id):
 def generate_barcode(number):
     # Ensure the number is a 12-digit string
     number = str(number).zfill(12)
+    
+    # Generate the barcode
     barcode = EAN13(number, writer=ImageWriter())
+    
+    # Save the barcode image (optional)
     barcode.save("barcode")
+    
+    # Extract the barcode number from the barcode object
     barcode_number = str(barcode).split("'")[1]
-    return "barcode.png" , barcode_number
+    
+    # Return both the filename and the barcode number
+    return "barcode.png", barcode_number
 
 @st.experimental_dialog("New experiment")
 def vote(barcode_image, barcode):
