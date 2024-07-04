@@ -178,8 +178,7 @@ st.markdown("---")
 if st.button("Insert a new value", use_container_width=True):
     try:
         
-        for key in st.session_state.keys():
-            del st.session_state[key]
+        del st.session_state['barcode']
 
     except:
         print("no hay nada")
