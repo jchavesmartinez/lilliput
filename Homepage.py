@@ -181,8 +181,6 @@ if st.button("Insert a new value", use_container_width=True):
         for key in st.session_state.keys():
             del st.session_state[key]
 
-        st.write(st.session_state)
-
     except:
         st.write("no hay nada")
     vote()
