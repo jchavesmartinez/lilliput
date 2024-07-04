@@ -77,7 +77,7 @@ def generate_barcode(number):
     barcode.save("barcode")
     return "barcode.png"
 
-#@st.experimental_dialog("Cast your vote")
+@st.experimental_dialog("Cast your vote")
 def vote(item):
 
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
