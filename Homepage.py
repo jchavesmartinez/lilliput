@@ -181,7 +181,7 @@ if st.button("Insert a new value", use_container_width=True):
         del st.session_state['barcode']
 
     except:
-        print("no hay nada")
+        st.write('error')
     
     vote()
 
