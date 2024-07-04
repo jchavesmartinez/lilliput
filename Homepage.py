@@ -79,8 +79,6 @@ def generate_barcode(number):
 
 @st.experimental_dialog("New experiment")
 def vote(master_data_dict):
-
-    st.write(master_data_dict)
     
     with st.form("my_form", clear_on_submit=True):
         timestamp = int(time.time())
