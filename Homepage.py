@@ -80,15 +80,16 @@ def generate_barcode(number):
 @st.experimental_dialog("New experiment")
 def vote(barcode_image, barcode):
 
-    st.image(image, caption='Generated Barcode')
-    
-    variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+    with st.form("my_form"):
+        st.image(image, caption='Generated Barcode')
+        
+        variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-    responses = {}
+        responses = {}
 
-    # Iterate over variables and create a text input for each
-    for i in variables:
-        responses[i["variable_name"]] = st.text_input(i["variable_name"],0 , key=i["variable_name"])
+        # Iterate over variables and create a text input for each
+        for i in variables:
+            responses[i["variable_name"]] = st.text_input(i["variable_name"],0 , key=i["variable_name"])
 
     if st.button("Submit"):
         responses['Barcode']=barcode
