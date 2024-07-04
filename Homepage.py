@@ -101,7 +101,8 @@ def vote():
 
     if submitted:
         st.success("Yay!")
-        st.rerun()
+        responses.clear()
+
 
 
         
