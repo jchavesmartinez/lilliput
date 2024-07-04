@@ -85,6 +85,10 @@ SplitWise enhances internal financial management by providing a structured frame
 
 st.markdown(description)
 
+
+st.markdown("---")
+
+
 @st.experimental_dialog("Cast your vote")
 def vote(item):
     st.write(f"Why is {item} your favorite?")
