@@ -92,7 +92,6 @@ def vote():
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
 
-        
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
         responses = {}
@@ -111,7 +110,38 @@ def vote():
 
         st.session_state['barcode'] = barcode
 
+def update_text_file(credentials, folder_id, file_id, file_name, new_content):
+    try:
+        print("Empezando a subir a Google Drive")
         
+        # Convert list of dictionaries to JSON string
+        json_str = json.dumps(new_content, indent=4, ensure_ascii=False)
+        
+        # Encode the string into bytes
+        bytes_data = json_str.encode('utf-8')
+
+        # Create credentials from service account info
+        credentials_pdf = service_account.Credentials.from_service_account_info(credentials)
+
+        # Build the Drive service
+        drive_service = build('drive', 'v3', credentials=credentials_pdf)
+
+        # Create file metadata
+        file_metadata = {
+            'name': file_name,
+            'addParents': [folder_id]  # Add the file to the specified folder
+        }
+
+        # Create media object for uploading file content
+        media = MediaIoBaseUpload(BytesIO(bytes_data), mimetype='text/plain')
+        
+        # Update the file
+        file = drive_service.files().update(fileId=file_id, body=file_metadata, media_body=media).execute()
+
+        print(f"File with ID '{file_id}' updated successfully")
+
+    except Exception as e:
+        print("Error updating file:", e)        
 
 
 
@@ -173,8 +203,10 @@ st.markdown(description)
 
 st.markdown("---")
 
+master_data = read_file_googledrive(credentials,'1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU')
 
-#if "vote" not in st.session_state:
+
+
 if st.button("Insert a new value", use_container_width=True):
     try:
         del st.session_state['barcode']
@@ -183,7 +215,11 @@ if st.button("Insert a new value", use_container_width=True):
     
     vote()
 
-    
+
+
+
+st.write(master_data)
+
 
 
 
