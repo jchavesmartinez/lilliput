@@ -100,6 +100,8 @@ def vote():
             responses[i["variable_name"]] = st.text_input(i["variable_name"],0 , key=i["variable_name"])
         
         responses['barcode']=barcode
+
+        st.write(barcode)
         
         submitted = st.form_submit_button("Submit form")
 
