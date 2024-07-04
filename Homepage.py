@@ -78,8 +78,10 @@ def generate_barcode(number):
     return "barcode.png" , barcode
 
 @st.experimental_dialog("New experiment")
-def vote():
+def vote(master_data_dict):
 
+    st.write(master_data_dict)
+    
     with st.form("my_form", clear_on_submit=True):
         timestamp = int(time.time())
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
@@ -214,7 +216,7 @@ if st.button("Insert a new value", use_container_width=True):
     except:
         print("nothing")
     
-    vote()
+    vote(master_data_dict)
 
 
 
