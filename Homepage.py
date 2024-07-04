@@ -93,7 +93,7 @@ def vote(barcode_image, barcode):
     if st.button("Submit"):
         responses['Barcode']=barcode
         st.write(responses)
-        st.toast('exito')
+        st.success('This is a success message!', icon="✅")
         
 
 #---------------------------- Codigo general --------------------------------
