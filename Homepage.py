@@ -78,8 +78,10 @@ def generate_barcode(number):
     return "barcode.png"
 
 @st.experimental_dialog("Cast your vote")
-def vote(item):
+def vote(item, barcode):
 
+    st.image(image, caption='Generated Barcode')
+    
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
     responses = {}
@@ -139,14 +141,18 @@ st.markdown(description)
 st.markdown("---")
 
 
-
-
-
-
-
 if "vote" not in st.session_state:
     if st.button("Insert a new value", use_container_width=True):
-        vote("A")
+        timestamp = int(time.time())
+        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+
+
+        barcode_path = generate_barcode(timestamp_str)
+        image = Image.open(barcode_path)
+        
+
+
+        vote("A",image)
 
 
 
@@ -154,13 +160,7 @@ st.title("Barcode Generator")
 
 if st.button("Generate Barcode"):
     # Generate a 10-digit timestamp
-    timestamp = int(time.time())
-    timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+    
 
-    if len(timestamp_str) == 12:
-        barcode_path = generate_barcode(timestamp_str)
-        image = Image.open(barcode_path)
-        st.image(image, caption='Generated Barcode')
-    else:
-        st.error("Error generating a valid 12-digit timestamp.")
+
 
