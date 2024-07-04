@@ -115,3 +115,23 @@ if "vote" not in st.session_state:
         vote("A")
 
 
+# Function to generate a barcode
+def generate_barcode(number):
+    # Ensure the number is a 12-digit string
+    number = str(number).zfill(12)
+    barcode = EAN13(number, writer=ImageWriter())
+    barcode.save("barcode")
+    return "barcode.png"
+
+st.title("Barcode Generator")
+
+number = st.text_input("Enter a 12-digit number for the barcode")
+
+if st.button("Generate Barcode"):
+    if len(number) == 12 and number.isdigit():
+        barcode_path = generate_barcode(number)
+        image = Image.open(barcode_path)
+        st.image(image, caption='Generated Barcode')
+    else:
+        st.error("Please enter a valid 12-digit number.")
+
