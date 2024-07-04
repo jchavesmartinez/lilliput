@@ -71,21 +71,44 @@ def read_file_googledrive(credentials,file_id):
 
 st.title("Lilliput Inventory Management")
 
-description='''### Description:
+description="""
+# Inventory Module Description
 
-SplitWise streamlines internal expense allocation, providing a structured approach to dividing costs among team members or departments. Designed to foster fairness and efficiency, SplitWise simplifies the process of managing shared expenses within your organization.
+## Overview
+The Inventory Module streamlines tracking and managing experiments in our chemical lab. Each experiment is tagged with a unique barcode containing key information about its conditions and parameters.
 
-SplitWise allows you to effortlessly distribute expenses for various activities such as office supplies, team lunches, or corporate events. By creating groups and logging expenses, SplitWise ensures that financial responsibilities are equitably distributed among participants.
+## Key Features
 
-**Key Features:**
-- **Efficient Expense Tracking:** Easily record and categorize expenses, facilitating accurate tracking and accountability.
-- **Equitable Distribution:** SplitWise employs robust algorithms to calculate each participant's share, promoting fairness and transparency.
-- **Timely Updates:** Receive prompt notifications and updates on expense entries and adjustments, enabling timely reconciliation.
-- **Confidential Collaboration:** SplitWise prioritizes data security, offering a secure platform for internal expense sharing among trusted team members.
-- **Flexible Payment Methods:** Seamlessly settle expenses using preferred payment channels, ensuring convenience and flexibility.
+1. **Barcode Generation:**
+   - Automatically generate and assign unique barcodes to experiments.
 
-SplitWise enhances internal financial management by providing a structured framework for expense allocation, allowing teams to focus on their core objectives without undue administrative burden. Experience the efficiency of SplitWise for equitable expense sharing within your organization today.'''
+2. **Experiment Tracking:**
+   - Scan barcodes to access detailed experiment info and key parameters.
 
+3. **Data Management:**
+   - Securely store all experiment data in a centralized database.
+   - Maintain a historical record for reference.
+
+4. **User-Friendly Interface:**
+   - Easy navigation with quick search and filter options.
+
+5. **Lab Equipment Integration:**
+   - Automatically record and tag experiments with barcodes.
+   - Real-time data capture and updates.
+
+6. **Reporting and Analysis:**
+   - Generate reports and analyze experiment trends and patterns.
+
+## Benefits
+
+- **Accuracy:** Reduces manual errors and ensures precise data tracking.
+- **Efficiency:** Streamlines documentation and retrieval processes.
+- **Organization:** Centralized storage improves lab management.
+- **Insights:** Supports data analysis for research advancements.
+
+## Conclusion
+The Inventory Module leverages barcode technology to manage experimental data efficiently, ensuring quick access to critical information and supporting our commitment to research excellence.
+"""
 
 st.markdown(description)
 
