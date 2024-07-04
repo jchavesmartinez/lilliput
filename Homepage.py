@@ -96,12 +96,15 @@ def vote(item):
 
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
+    responses = {}
+
+    # Iterate over variables and create a text input for each
     for i in variables:
-        respuestas = st.text_input(i["variable_name"], 0, key=i["variable_name"])
+        responses[i["variable_name"]] = st.text_input(i["variable_name"], key=i["variable_name"])
 
     if st.button("Submit"):
-        st.write(respuestas)
-        #st.rerun()
+        st.write(responses)
+
 
 if "vote" not in st.session_state:
     if st.button("Insert a new value", use_container_width=True):
