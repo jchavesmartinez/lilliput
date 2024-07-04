@@ -69,7 +69,7 @@ def read_file_googledrive(credentials,file_id):
     
     return text_content
 
-st.title("DevStack SplitWise")
+st.title("Lilliput Inventory Management")
 
 description='''### Description:
 
