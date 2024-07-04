@@ -154,10 +154,6 @@ if "vote" not in st.session_state:
 
         vote("A",image)
 
-
-
-st.title("Barcode Generator")
-
     
 
 
