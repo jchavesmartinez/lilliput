@@ -93,10 +93,10 @@ def vote(barcode_image, barcode):
         
         submitted = st.form_submit_button("Submit form")
 
-    if st.button("Submit"):
-        responses['Barcode']=barcode
-        st.write(responses)
-        st.success('This is a success message!', icon="✅")
+    if submitted:
+        st.success("Yay!")
+        if st.button("Close"):
+            st.rerun()
         
 
 #---------------------------- Codigo general --------------------------------
