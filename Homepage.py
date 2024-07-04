@@ -111,9 +111,11 @@ def vote(master_data_dict):
 
         st.write(master_data_dict)
 
+        update_text_file(credentials, folder_id, file_id, file_name, new_content)
+
         st.session_state['barcode'] = barcode
 
-def update_text_file(credentials, folder_id, file_id, file_name, new_content):
+def update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict):
     try:
         print("Empezando a subir a Google Drive")
         
@@ -145,8 +147,6 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
 
     except Exception as e:
         print("Error updating file:", e)        
-
-
 
 
         
