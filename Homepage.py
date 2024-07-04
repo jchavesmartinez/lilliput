@@ -115,7 +115,7 @@ def vote(master_data_dict):
 
         st.session_state['barcode'] = barcode
 
-def update_text_file(credentials, 'folder_id', file_id, file_name, new_content):
+def update_text_file(credentials, folder_id, file_id, file_name, new_content):
     try:
         print("Empezando a subir a Google Drive")
         
