@@ -156,6 +156,8 @@ def complete_value(master_data_dict):
     
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
 
+    st.write(master_data_dict)
+    
     if search_barcode_form:
         
         with st.form("my_form", clear_on_submit=True):
@@ -165,7 +167,7 @@ def complete_value(master_data_dict):
 
             st.write(variables)
             st.write("wenas")
-            st.write(master_data_dict)
+            
 
             responses = {}
 
