@@ -170,7 +170,7 @@ def complete_value(master_data_dict):
             
                 st.write("Independent Variables")
                 for i in variables:
-                    if i['variable_type']=='Independant':
+                    if i['variable_type']=='Independant' and i['barcode']==int(search_barcode_form) :
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
 
@@ -178,7 +178,7 @@ def complete_value(master_data_dict):
             
                 st.write("Dependent Variables")
                 for i in variables:
-                    if i['variable_type']=='Dependant':
+                    if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
             timestamp = int(search_barcode_form)
