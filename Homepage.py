@@ -151,7 +151,7 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
     except Exception as e:
         print("Error updating file:", e)        
 
-@st.experimental_dialog("Complete experiment")
+@st.experimental_dialog("Complete experiment", width="large")
 def complete_value(master_data_dict):
     
     with st.form("my_form", clear_on_submit=True):
