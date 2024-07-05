@@ -215,38 +215,3 @@ if st.button("Insert a new value (independent variables)", use_container_width=T
 
 
 master_data_df_edit = st.data_editor(master_data_df, num_rows="dynamic")
-
-
-import streamlit as st
-from io import BytesIO
-import barcode
-from barcode.writer import ImageWriter
-import tempfile
-
-def generate_barcode(data, file_path):
-    # Generate barcode image
-    EAN = barcode.get_barcode_class('ean13')
-    ean = EAN(data, writer=ImageWriter())
-    
-    # Save barcode image to the specified file path
-    ean.save(file_path)
-
-st.title("Barcode Generator")
-
-# Example data for the barcode
-barcode_data = "123456789102"
-
-if st.button("Generate Barcode"):
-    # Create a temporary file to save the barcode image
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmp_file:
-        generate_barcode(barcode_data, tmp_file.name)
-        tmp_file_path = tmp_file.name
-    
-    # Read the temporary file and provide a download link
-    with open(tmp_file_path, "rb") as file:
-        btn = st.download_button(
-            label="Download Barcode",
-            data=file,
-            file_name="barcode.png",
-            mime="image/png"
-        )
