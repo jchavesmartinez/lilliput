@@ -187,7 +187,7 @@ def complete_value(master_data_dict):
 
             except:
                 st.write("No data found")
-                submitted = st.form_submit_button("Submit form", use_container_width=True)
+                submitted = st.form_submit_button("Submit form", use_container_width=True, disabled=True)
                 
             
         if submitted:
