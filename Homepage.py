@@ -163,7 +163,7 @@ def complete_value(master_data_dict):
 
         # Iterate over variables and create a text input for each
         for i in variables:
-            if i['variable_type']=='Independant':
+            if i['variable_type']=='Dependant':
                 responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
         
                
