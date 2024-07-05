@@ -163,6 +163,10 @@ def complete_value(master_data_dict):
 
             variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
+            st.write(variables)
+            st.write("wenas")
+            st.write(master_data_dict)
+
             responses = {}
 
             col1, col2 = st.columns(2)
