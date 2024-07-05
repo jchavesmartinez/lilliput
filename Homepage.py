@@ -215,3 +215,42 @@ if st.button("Insert a new value (independent variables)", use_container_width=T
 
 
 master_data_df_edit = st.data_editor(master_data_df, num_rows="dynamic")
+
+import streamlit as st
+from io import BytesIO
+import barcode
+from barcode.writer import ImageWriter
+import base64
+
+def generate_barcode(data):
+    # Generate barcode image
+    EAN = barcode.get_barcode_class('ean13')
+    ean = EAN(data, writer=ImageWriter())
+    
+    # Save barcode image to a BytesIO object
+    buffer = BytesIO()
+    ean.write(buffer, format='PNG')
+    buffer.seek(0)
+    
+    return buffer
+
+def get_image_download_link(img, filename, text):
+    # Encode image to base64
+    b64 = base64.b64encode(img.getvalue()).decode()
+    href = f'<a href="data:file/png;base64,{b64}" download="{filename}">{text}</a>'
+    return href
+
+st.title("Barcode Generator")
+
+# Example data for the barcode
+barcode_data = "123456789102"
+
+if st.button("Generate Barcode"):
+    # Generate the barcode image
+    barcode_image = generate_barcode(barcode_data)
+    
+    # Create a download link
+    download_link = get_image_download_link(barcode_image, "barcode.png", "Click here to download your barcode")
+    
+    # Display the download link using markdown
+    st.markdown(download_link, unsafe_allow_html=True)
