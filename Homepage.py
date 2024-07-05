@@ -160,30 +160,30 @@ def complete_value(master_data_dict):
         with st.form("my_form", clear_on_submit=True):
 
 
-                variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+            variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-                responses = {}
+            responses = {}
 
-                # Iterate over variables and create a text input for each
-                for i in variables:
-                    if i['variable_type']=='Dependant':
-                        responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+            # Iterate over variables and create a text input for each
+            for i in variables:
+                if i['variable_type']=='Dependant':
+                    responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+            
                 
-                    
-                submitted = st.form_submit_button("Submit form", use_container_width=True)
+            submitted = st.form_submit_button("Submit form", use_container_width=True)
 
-            if submitted:
+        if submitted:
 
-                responses['barcode']=st.session_state.barcode
-                master_data_dict.append(responses)
-                update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-                st.session_state['barcode'] = barcode
-                st.rerun()
+            responses['barcode']=st.session_state.barcode
+            master_data_dict.append(responses)
+            update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+            st.session_state['barcode'] = barcode
+            st.rerun()
 
     else:
         st.write("Search by barcode")
     
-    
+
   
 
 #---------------------------- Codigo general --------------------------------
