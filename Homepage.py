@@ -217,35 +217,64 @@ if st.button("Insert a new value (independent variables)", use_container_width=T
 master_data_df_edit = st.data_editor(master_data_df, num_rows="dynamic")
 
 
-# Function to generate barcode
-def generate_barcode(number):
-    number = str(number).zfill(12)
-    barcode = EAN13(number, writer=ImageWriter())
-    barcode_file = f"barcode_{number}.png"
-    barcode.save(barcode_file)
-    return barcode_file, barcode
+import streamlit as st
+import streamlit.components.v1 as components
+import pandas as pd
+import base64
+import json
 
-# Function to create a download link
-def create_download_link(file_path, file_label='Download file'):
-    with open(file_path, "rb") as file:
-        btn = st.download_button(
-            label=file_label,
-            data=file,
-            file_name=file_path,
-            mime="image/png"
-        )
-    return btn
 
-# Streamlit form
-with st.form("my_form"):
-    number = st.text_input("Enter a 12-digit number for the barcode:")
-    submit_button = st.form_submit_button("Submit form", use_container_width=True)
+def download_button(object_to_download, download_filename):
+    """
+    Generates a link to download the given object_to_download.
+    Params:
+    ------
+    object_to_download:  The object to be downloaded.
+    download_filename (str): filename and extension of file. e.g. mydata.csv,
+    Returns:
+    -------
+    (str): the anchor tag to download object_to_download
+    """
+    if isinstance(object_to_download, pd.DataFrame):
+        object_to_download = object_to_download.to_csv(index=False)
 
-    if submit_button:
-        if len(number) == 12 and number.isdigit():
-            file_path, barcode = generate_barcode(number)
-            st.image(file_path, caption="Generated Barcode")
-            create_download_link(file_path, file_label="Download Barcode")
-        else:
-            st.error("Please enter a valid 12-digit number.")
+    # Try JSON encode for everything else
+    else:
+        object_to_download = json.dumps(object_to_download)
 
+    try:
+        # some strings <-> bytes conversions necessary here
+        b64 = base64.b64encode(object_to_download.encode()).decode()
+
+    except AttributeError as e:
+        b64 = base64.b64encode(object_to_download).decode()
+
+    dl_link = f"""
+    <html>
+    <head>
+    <title>Start Auto Download file</title>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+    $('<a href="data:text/csv;base64,{b64}" download="{download_filename}">')[0].click()
+    </script>
+    </head>
+    </html>
+    """
+    return dl_link
+
+
+def download_df():
+    df = pd.DataFrame(st.session_state.col_values, columns=[st.session_state.col_name])
+    components.html(
+        download_button(df, st.session_state.filename),
+        height=0,
+    )
+
+
+with st.form("my_form", clear_on_submit=False):
+    st.text_input("Column name", help="Name of column", key="col_name")
+    st.multiselect(
+        "Entries", options=["A", "B", "C"], help="Entries in column", key="col_values"
+    )
+    st.text_input("Filename (must include .csv)", key="filename")
+    submit = st.form_submit_button("Download dataframe", on_click=download_df)
