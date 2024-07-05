@@ -187,7 +187,7 @@ def complete_value(master_data_dict):
             barcode = str(barcode).split("'")[0]
             image = Image.open(barcode_path)
 
-            st.image(image, caption='Generated Barcode')
+            st.image(image, caption='Generated Barcode', use_column_width=True)
             
                 
             submitted = st.form_submit_button("Submit form", use_container_width=True)
