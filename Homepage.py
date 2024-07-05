@@ -149,6 +149,8 @@ def complete_value(master_data_dict):
     
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
 
+    st.write(variables)
+    st.write("wenas")
     st.write(master_data_dict)
     
     if search_barcode_form:
@@ -158,8 +160,7 @@ def complete_value(master_data_dict):
 
             variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-            st.write(variables)
-            st.write("wenas")
+
             
 
             responses = {}
