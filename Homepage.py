@@ -229,7 +229,7 @@ def generate_barcode(data):
     
     # Save barcode image to a BytesIO object
     buffer = BytesIO()
-    ean.write(buffer, format='PNG')
+    ean.write(buffer, format='png')
     buffer.seek(0)
     
     return buffer
