@@ -6,14 +6,8 @@ from io import BytesIO
 import json
 import pandas as pd
 import re
-import pydeck as pdk
 import numpy as np
 from streamlit_dynamic_filters import DynamicFilters
-import plotly.graph_objects as go
-import plotly.express as px
-import altair as alt
-import numpy as np
-import locale
 from barcode import EAN13
 from barcode.writer import ImageWriter
 from PIL import Image
