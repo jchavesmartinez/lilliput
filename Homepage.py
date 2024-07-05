@@ -182,6 +182,14 @@ def complete_value(master_data_dict):
                 for i in variables:
                     if i['variable_type']=='Dependant':
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+
+            timestamp = int(time.time())
+            timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+            barcode_path, barcode = generate_barcode(timestamp_str)
+            barcode = str(barcode).split("'")[0]
+            image = Image.open(barcode_path)
+
+            st.image(image, caption='Generated Barcode')
             
                 
             submitted = st.form_submit_button("Submit form", use_container_width=True)
