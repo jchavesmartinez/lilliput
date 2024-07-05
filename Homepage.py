@@ -154,6 +154,8 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
 @st.experimental_dialog("Update experiment", width="large")
 def complete_value(master_data_dict):
     
+    search_barcode_form = st.text_input("Search by barcode")
+    
     with st.form("my_form", clear_on_submit=True):
 
 
