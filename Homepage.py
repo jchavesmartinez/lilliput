@@ -151,7 +151,7 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
     except Exception as e:
         print("Error updating file:", e)        
 
-@st.experimental_dialog("Complete experiment", width="large")
+@st.experimental_dialog("Update experiment", width="large")
 def complete_value(master_data_dict):
     
     with st.form("my_form", clear_on_submit=True):
@@ -236,7 +236,7 @@ if st.button("Insert a new value (independent variables)", use_container_width=T
     
     new_value(master_data_dict)
 
-if st.button("Complete a value (dependent variables)", use_container_width=True):
+if st.button("Update a value (dependent variables)", use_container_width=True):
     try:
         del st.session_state['barcode']
     except:
