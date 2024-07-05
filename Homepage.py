@@ -181,7 +181,7 @@ def complete_value(master_data_dict):
                     if i['variable_type']=='Dependant':
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
-            timestamp = int(time.time())
+            timestamp = int(search_barcode_form)
             timestamp_str = str(timestamp).zfill(12)
             barcode_path, barcode = generate_barcode(timestamp_str)
             barcode = str(barcode).split("'")[0]
