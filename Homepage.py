@@ -155,16 +155,7 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
 def complete_value(master_data_dict):
     
     with st.form("my_form", clear_on_submit=True):
-        timestamp = int(time.time())
-        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode = generate_barcode(timestamp_str)
-        barcode = str(barcode).split("'")[0]
-        image = Image.open(barcode_path)
 
-        st.image(image, caption='Generated Barcode')
-
-        if 'barcode' not in st.session_state:
-            st.session_state['barcode'] = barcode
 
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
