@@ -168,6 +168,7 @@ def complete_value(master_data_dict):
             
             with col1:
             
+                st.write("Independent Variables")
                 # Iterate over variables and create a text input for each
                 for i in variables:
                     if i['variable_type']=='Independant':
@@ -176,6 +177,7 @@ def complete_value(master_data_dict):
 
             with col2:
             
+                st.write("Dependent Variables")
                 # Iterate over variables and create a text input for each
                 for i in variables:
                     if i['variable_type']=='Dependant':
