@@ -157,39 +157,42 @@ def complete_value(master_data_dict):
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
 
     if search_barcode_form:
-        with st.form("my_form", clear_on_submit=True):
+        try:
+            with st.form("my_form", clear_on_submit=True):
 
 
-            variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+                variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-            responses = {}
+                responses = {}
 
-            col1, col2 = st.columns(2)
-            
-            with col1:
-            
-                st.write("Independent Variables")
-                for i in variables:
-                    if i['variable_type']=='Independant' and i['barcode']==int(search_barcode_form) :
-                        responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
-
-
-            with col2:
-            
-                st.write("Dependent Variables")
-                for i in variables:
-                    if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
-                        responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+                col1, col2 = st.columns(2)
                 
-            submitted = st.form_submit_button("Submit form", use_container_width=True)
+                with col1:
+                
+                    st.write("Independent Variables")
+                    for i in variables:
+                        if i['variable_type']=='Independant' and i['barcode']==int(search_barcode_form) :
+                            responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
-        if submitted:
 
-            responses['barcode']=st.session_state.barcode
-            master_data_dict.append(responses)
-            update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-            st.session_state['barcode'] = barcode
-            st.rerun()
+                with col2:
+                
+                    st.write("Dependent Variables")
+                    for i in variables:
+                        if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
+                            responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+                    
+                submitted = st.form_submit_button("Submit form", use_container_width=True)
+
+            if submitted:
+
+                responses['barcode']=st.session_state.barcode
+                master_data_dict.append(responses)
+                update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+                st.session_state['barcode'] = barcode
+                st.rerun()
+        except:
+            st.write("No data found")
 
         timestamp = int(search_barcode_form)
         timestamp_str = str(timestamp).zfill(12)
