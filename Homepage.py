@@ -213,6 +213,7 @@ if st.button("Insert a new value (independent variables)", use_container_width=T
 
 
 
+st.text_input("Search by barcode")
 
 master_data_df_edit = st.data_editor(master_data_df, num_rows="dynamic")
 
