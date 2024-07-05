@@ -29,7 +29,6 @@ st.set_page_config(
 
 #---------------------------- Variables generales --------------------------------
 
-
 credentials = {
     "type": "service_account",
     "project_id": "devstackerp",
