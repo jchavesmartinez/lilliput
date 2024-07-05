@@ -169,7 +169,6 @@ def complete_value(master_data_dict):
             with col1:
             
                 st.write("Independent Variables")
-                # Iterate over variables and create a text input for each
                 for i in variables:
                     if i['variable_type']=='Independant':
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
@@ -178,13 +177,12 @@ def complete_value(master_data_dict):
             with col2:
             
                 st.write("Dependent Variables")
-                # Iterate over variables and create a text input for each
                 for i in variables:
                     if i['variable_type']=='Dependant':
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
             timestamp = int(time.time())
-            timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+            timestamp_str = str(timestamp).zfill(12)
             barcode_path, barcode = generate_barcode(timestamp_str)
             barcode = str(barcode).split("'")[0]
             image = Image.open(barcode_path)
