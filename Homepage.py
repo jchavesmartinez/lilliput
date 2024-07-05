@@ -213,7 +213,13 @@ if st.button("Insert a new value (independent variables)", use_container_width=T
 
 
 
-st.text_input("Search by barcode")
+search_barcode = st.text_input("Search by barcode")
 
-master_data_df_edit = st.data_editor(master_data_df, num_rows="dynamic")
+# Filter the dataframe based on the input
+if search_barcode:
+    filtered_df = master_data_df[master_data_df['barcode'].str.contains(search_barcode)]
+else:
+    filtered_df = master_data_df
+
+master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic")
 
