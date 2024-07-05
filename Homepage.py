@@ -80,29 +80,62 @@ def generate_barcode(number):
 @st.experimental_dialog("New experiment")
 def vote(master_data_dict):
     
-    with st.form("my_form", clear_on_submit=True):
-        timestamp = int(time.time())
-        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode = generate_barcode(timestamp_str)
-        barcode = str(barcode).split("'")[0]
-        image = Image.open(barcode_path)
+    # with st.form("my_form", clear_on_submit=True):
+    #     timestamp = int(time.time())
+    #     timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+    #     barcode_path, barcode = generate_barcode(timestamp_str)
+    #     barcode = str(barcode).split("'")[0]
+    #     image = Image.open(barcode_path)
 
-        st.image(image, caption='Generated Barcode')
+    #     st.image(image, caption='Generated Barcode')
 
-        if 'barcode' not in st.session_state:
-            st.session_state['barcode'] = barcode
+    #     if 'barcode' not in st.session_state:
+    #         st.session_state['barcode'] = barcode
 
-        variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+    #     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-        responses = {}
+    #     responses = {}
 
-        # Iterate over variables and create a text input for each
-        for i in variables:
-            if i['variable_type']=='Independant':
-                responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
+    #     # Iterate over variables and create a text input for each
+    #     for i in variables:
+    #         if i['variable_type']=='Independant':
+    #             responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
         
                
-        submitted = st.form_submit_button("Submit form", use_container_width=True)
+    #     submitted = st.form_submit_button("Submit form", use_container_width=True)
+
+    # if submitted:
+
+    #     responses['barcode']=st.session_state.barcode
+    #     master_data_dict.append(responses)
+    #     update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+    #     st.session_state['barcode'] = barcode
+    #     st.rerun()
+
+
+
+    timestamp = int(time.time())
+    timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+    barcode_path, barcode = generate_barcode(timestamp_str)
+    barcode = str(barcode).split("'")[0]
+    image = Image.open(barcode_path)
+
+    st.image(image, caption='Generated Barcode')
+
+    if 'barcode' not in st.session_state:
+        st.session_state['barcode'] = barcode
+
+    variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+
+    responses = {}
+
+    # Iterate over variables and create a text input for each
+    for i in variables:
+        if i['variable_type']=='Independant':
+            responses[i["variable_name"]] = st.text_input(i["variable_name"], 0 , key=i["variable_name"])
+    
+            
+    submitted = st.button("Submit form", use_container_width=True)
 
     if submitted:
 
