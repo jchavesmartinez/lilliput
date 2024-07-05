@@ -150,9 +150,7 @@ def complete_value(master_data_dict):
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
 
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
-    st.write(variables)
-    st.write("wenas")
-    st.write(master_data_dict)
+
     
     if search_barcode_form:
         
@@ -163,20 +161,20 @@ def complete_value(master_data_dict):
             col1, col2 = st.columns(2)
             
             try:
-                # with col1:
+                with col1:
                 
-                #     st.write("Independent Variables")
-                #     for i in variables:
-                #         if i['variable_type']=='Independant' and i['barcode']==int(search_barcode_form) :
-                #             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+                    st.write("Independent Variables")
+                    for i in variables:
+                        if i['variable_type']=='Independant' and i['barcode']==int(search_barcode_form) :
+                            responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
 
-                # with col2:
+                with col2:
                 
-                #     st.write("Dependent Variables")
-                #     for i in variables:
-                #         if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
-                #             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+                    st.write("Dependent Variables")
+                    for i in variables:
+                        if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
+                            responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
                 submitted = st.form_submit_button("Submit form", use_container_width=True)
 
