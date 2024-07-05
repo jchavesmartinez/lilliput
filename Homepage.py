@@ -183,11 +183,7 @@ def complete_value(master_data_dict):
                         if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
                             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
             except:
-                with col1:
-                    st.write("No data found")
-
-                with col2:
-                    st.write("No data found")
+                st.write("No data found")
                 
             submitted = st.form_submit_button("Submit form", use_container_width=True)
 
