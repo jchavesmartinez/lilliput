@@ -234,6 +234,7 @@ def vote(item):
     if st.button("Submit"):
         #st.session_state.vote = {"item": item, "reason": reason}
         #st.rerun()
+        print("wenas")
 
 if "vote" not in st.session_state:
     st.write("Vote for your favorite")
