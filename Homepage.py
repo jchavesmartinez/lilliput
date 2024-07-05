@@ -174,7 +174,7 @@ def complete_value(master_data_dict):
             try:
                 with col1:
                 
-                    #st.write("Independenta Variables")
+                    st.write("Independent Variables")
                     for i in variables:
                         if i['variable_type']=='Independant' and i['barcode']==int(search_barcode_form) :
                             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
