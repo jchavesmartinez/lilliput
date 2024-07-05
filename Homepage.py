@@ -108,12 +108,10 @@ def vote(master_data_dict):
 
         responses['barcode']=st.session_state.barcode
         master_data_dict.append(responses)
-
-        st.write(master_data_dict)
-
         update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-
         st.session_state['barcode'] = barcode
+        st.rerun()
+
 
 def update_text_file(credentials, folder_id, file_id, file_name, new_content):
     try:
