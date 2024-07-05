@@ -180,15 +180,6 @@ def complete_value(master_data_dict):
                 for i in variables:
                     if i['variable_type']=='Dependant' and i['barcode']==int(search_barcode_form):
                         responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
-
-            timestamp = int(search_barcode_form)
-            timestamp_str = str(timestamp).zfill(12)
-            barcode_path, barcode = generate_barcode(timestamp_str)
-            barcode = str(barcode).split("'")[0]
-            image = Image.open(barcode_path)
-
-            st.image(image, caption='Generated Barcode', use_column_width=True)
-            
                 
             submitted = st.form_submit_button("Submit form", use_container_width=True)
 
@@ -199,6 +190,15 @@ def complete_value(master_data_dict):
             update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
             st.session_state['barcode'] = barcode
             st.rerun()
+
+        timestamp = int(search_barcode_form)
+        timestamp_str = str(timestamp).zfill(12)
+        barcode_path, barcode = generate_barcode(timestamp_str)
+        barcode = str(barcode).split("'")[0]
+        image = Image.open(barcode_path)
+
+        st.image(image, caption='Generated Barcode', use_column_width=True)
+
 
     else:
         st.write("Search by barcode")
