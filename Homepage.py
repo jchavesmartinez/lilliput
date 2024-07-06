@@ -151,39 +151,11 @@ def complete_value(master_data_dict):
 
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-    
     if search_barcode_form:
-        
-        with st.form("my_form", clear_on_submit=True):
+        st.wirte("hay numero")
+    else:
+        st.write("no hay numero")
 
-            def filter_by_barcode(barcode):
-                return [entry for entry in data if entry["barcode"] == barcode]
-
-            responses = {}
-
-
-            submitted = st.form_submit_button("Submit form", use_container_width=True)
-
-            except:
-                st.write("No data found")
-                submitted = st.form_submit_button("Submit form", use_container_width=True, disabled=True)
-                
-            
-        if submitted:
-
-            responses['barcode']=st.session_state.barcode
-            master_data_dict.append(responses)
-            update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-            st.session_state['barcode'] = barcode
-            st.rerun()
-
-        timestamp = int(search_barcode_form)
-        timestamp_str = str(timestamp).zfill(12)
-        barcode_path, barcode = generate_barcode(timestamp_str)
-        barcode = str(barcode).split("'")[0]
-        image = Image.open(barcode_path)
-
-        st.image(image, caption='Generated Barcode', use_column_width=True)
 
 
     else:
