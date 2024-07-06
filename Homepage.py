@@ -161,20 +161,20 @@ def complete_value(master_data_dict):
             col1, col2 = st.columns(2)
             
             try:
-                with col1:
+                # with col1:
                 
-                    st.write("Independent Variables")
-                    for i in variables:
-                        if i['variable_type']=='Independant' :
-                            responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+                #     st.write("Independent Variables")
+                #     for i in variables:
+                #         if i['variable_type']=='Independant' :
+                #             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
 
-                with col2:
+                # with col2:
                 
-                    st.write("Dependent Variables")
-                    for i in variables:
-                        if i['variable_type']=='Dependant':
-                            responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+                #     st.write("Dependent Variables")
+                #     for i in variables:
+                #         if i['variable_type']=='Dependant':
+                #             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
                 submitted = st.form_submit_button("Submit form", use_container_width=True)
 
