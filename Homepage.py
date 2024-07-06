@@ -156,12 +156,7 @@ def complete_value(master_data_dict):
     else:
         st.write("no hay numero")
 
-
-
-    else:
-        st.write("Search by barcode")
     
-
   
 
 #---------------------------- Codigo general --------------------------------
