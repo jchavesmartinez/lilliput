@@ -160,6 +160,7 @@ def complete_value(master_data_dict):
 
             values_from_dict1 = filtered_data[0]
             st.write(values_from_dict1)
+            st.write(filtered_data)
 
 
 
