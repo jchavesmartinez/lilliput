@@ -152,7 +152,7 @@ def complete_value(master_data_dict):
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
     if search_barcode_form:
-        st.wirte("hay numero")
+        st.write("hay numero")
     else:
         st.write("no hay numero")
 
