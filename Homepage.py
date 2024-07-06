@@ -159,9 +159,17 @@ def complete_value(master_data_dict):
         if filtered_data:
 
             values_from_dict1 = filtered_data[0]
-            st.write(values_from_dict1)
-            st.write(filtered_data)
 
+            for variable in dict2:
+                if variable["variable_type"] == "Dependant":
+                    variable_name = variable["variable_name"]
+                    variable_description = variable["variable_description"]
+
+                    # Get the corresponding value from dict1
+                    value = values_from_dict1.get(variable_name, "")
+
+                    # Create a text input in Streamlit
+                    st.text_input(label=f"{variable_name} ({variable['variable_type']})", value=value, help=variable_description)
 
 
 
