@@ -156,30 +156,13 @@ def complete_value(master_data_dict):
         
         with st.form("my_form", clear_on_submit=True):
 
+            def filter_by_barcode(barcode):
+                return [entry for entry in data if entry["barcode"] == barcode]
+
             responses = {}
 
-            col1, col2 = st.columns(2)
-            
-            try:
-                
-                st.write(master_data_dict)
-                
-                # with col1:
-                
-                #     st.write("Independent Variables")
-                #     for i in variables:
-                #         if i['variable_type']=='Independant' :
-                #             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
-
-                # with col2:
-                
-                #     st.write("Dependent Variables")
-                #     for i in variables:
-                #         if i['variable_type']=='Dependant':
-                #             responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
-
-                submitted = st.form_submit_button("Submit form", use_container_width=True)
+            submitted = st.form_submit_button("Submit form", use_container_width=True)
 
             except:
                 st.write("No data found")
