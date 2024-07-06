@@ -153,7 +153,7 @@ def complete_value(master_data_dict):
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
     
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
-    filtered_data = filter_by_barcode(barcode_input)
+    filtered_data = filter_by_barcode(search_barcode_form)
 
     if search_barcode_form:
         if filtered_data:
