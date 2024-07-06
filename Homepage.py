@@ -160,7 +160,7 @@ def complete_value(master_data_dict):
 
             values_from_dict1 = filtered_data[0]
 
-            for variable in dict2:
+            for variable in variables:
                 if variable["variable_type"] == "Dependant":
                     variable_name = variable["variable_name"]
                     variable_description = variable["variable_description"]
