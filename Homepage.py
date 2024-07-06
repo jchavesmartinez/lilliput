@@ -146,7 +146,10 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
 
 @st.experimental_dialog("Update experiment", width="large")
 def complete_value(master_data_dict):
-    
+
+    def filter_by_barcode(barcode):
+        return [entry for entry in data if entry["barcode"] == barcode]
+
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
     
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
