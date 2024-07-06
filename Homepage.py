@@ -157,34 +157,36 @@ def complete_value(master_data_dict):
 
     if search_barcode_form:
         if filtered_data:
+            with st.form("my_form", clear_on_submit=True):
+                values_from_dict1 = filtered_data[0]
 
-            values_from_dict1 = filtered_data[0]
+                col1, col2 = st.columns(2)
 
-            col1, col2 = st.columns(2)
+                for variable in variables:
+                    if variable["variable_type"] == "Independant":
+                        variable_name = variable["variable_name"]
+                        variable_description = variable["variable_description"]
 
-            for variable in variables:
-                if variable["variable_type"] == "Independant":
-                    variable_name = variable["variable_name"]
-                    variable_description = variable["variable_description"]
+                        # Get the corresponding value from dict1
+                        value = values_from_dict1.get(variable_name, "")
 
-                    # Get the corresponding value from dict1
-                    value = values_from_dict1.get(variable_name, "")
+                        with col1:
 
-                    with col1:
+                            # Create a text input in Streamlit
+                            st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+                    elif variable["variable_type"] == "Dependant":
+                        variable_name = variable["variable_name"]
+                        variable_description = variable["variable_description"]
 
-                        # Create a text input in Streamlit
-                        st.text_input(label=f"{variable_name}", value=value, help=variable_description)
-                elif variable["variable_type"] == "Dependant":
-                    variable_name = variable["variable_name"]
-                    variable_description = variable["variable_description"]
+                        # Get the corresponding value from dict1
+                        value = values_from_dict1.get(variable_name, "")
 
-                    # Get the corresponding value from dict1
-                    value = values_from_dict1.get(variable_name, "")
+                        with col2:
 
-                    with col2:
-
-                        # Create a text input in Streamlit
-                        st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+                            # Create a text input in Streamlit
+                            st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+            
+                submitted = st.form_submit_button("Submit form", use_container_width=True)
 
 
 
