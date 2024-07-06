@@ -325,6 +325,8 @@ dict2 = [
 # Create text inputs for each variable in dict2 and assign values from dict1
 values_from_dict1 = dict1[0]
 
+st.write(values_from_dict1)
+
 for variable in dict2:
     variable_name = variable["variable_name"]
     variable_description = variable["variable_description"]
