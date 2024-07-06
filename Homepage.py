@@ -161,6 +161,9 @@ def complete_value(master_data_dict):
             col1, col2 = st.columns(2)
             
             try:
+                
+                st.write(master_data_dict)
+                
                 # with col1:
                 
                 #     st.write("Independent Variables")
