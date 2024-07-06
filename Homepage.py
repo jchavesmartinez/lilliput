@@ -173,7 +173,7 @@ def complete_value(master_data_dict):
                     with col1:
 
                         # Create a text input in Streamlit
-                        st.text_input(label=f"{variable_name} ({variable['variable_type']})", value=value, help=variable_description)
+                        st.text_input(label=f"{variable_name}", value=value, help=variable_description)
                 elif variable["variable_type"] == "Dependant":
                     variable_name = variable["variable_name"]
                     variable_description = variable["variable_description"]
@@ -184,7 +184,7 @@ def complete_value(master_data_dict):
                     with col2:
 
                         # Create a text input in Streamlit
-                        st.text_input(label=f"{variable_name} ({variable['variable_type']})", value=value, help=variable_description)
+                        st.text_input(label=f"{variable_name}", value=value, help=variable_description)
 
 
 
