@@ -245,3 +245,92 @@ else:
 
 master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index=True)
 
+
+dict1 = [
+    {
+        "Time (min)": "15",
+        "Temperature (°C)": "30",
+        "Volume (mL)": "45",
+        "Concentration of precursor 1 (mol/L)": "0.7",
+        "Concentration of precursor 2 (mol/L)": "1.2",
+        "Purification method": "Filtration",
+        "barcode": "0017201359524"
+    }
+]
+
+# Data from dict2
+dict2 = [
+    {
+        "variable_name": "Time (min)",
+        "variable_type": "Independant",
+        "variable_description": "The age of the person in years."
+    },
+    {
+        "variable_name": "Temperature (°C)",
+        "variable_type": "Independant",
+        "variable_description": "The full name of the person."
+    },
+    {
+        "variable_name": "Volume (mL)",
+        "variable_type": "Independant",
+        "variable_description": "Whether the person is a student or not."
+    },
+    {
+        "variable_name": "Concentration of precursor 1 (mol/L)",
+        "variable_type": "Independant",
+        "variable_description": "The height of the person in meters."
+    },
+    {
+        "variable_name": "Concentration of precursor 2 (mol/L)",
+        "variable_type": "Independant",
+        "variable_description": "The email address of the person."
+    },
+    {
+        "variable_name": "Purification method",
+        "variable_type": "Independant",
+        "variable_description": "The email address of the person."
+    },
+    {
+        "variable_name": "D1",
+        "variable_type": "Dependant",
+        "variable_description": "The age of the person in years."
+    },
+    {
+        "variable_name": "D2",
+        "variable_type": "Dependant",
+        "variable_description": "The full name of the person."
+    },
+    {
+        "variable_name": "D3",
+        "variable_type": "Dependant",
+        "variable_description": "Whether the person is a student or not."
+    },
+    {
+        "variable_name": "D4",
+        "variable_type": "Dependant",
+        "variable_description": "The height of the person in meters."
+    },
+    {
+        "variable_name": "D5",
+        "variable_type": "Dependant",
+        "variable_description": "The email address of the person."
+    },
+    {
+        "variable_name": "D6",
+        "variable_type": "Dependant",
+        "variable_description": "The email address of the person."
+    }
+]
+
+# Create text inputs for each variable in dict2 and assign values from dict1
+values_from_dict1 = dict1[0]
+
+for variable in dict2:
+    variable_name = variable["variable_name"]
+    variable_description = variable["variable_description"]
+
+    # Get the corresponding value from dict1
+    value = values_from_dict1.get(variable_name, "")
+
+    # Create a text input in Streamlit
+    st.text_input(label=f"{variable_name} ({variable['variable_type']})", value=value, help=variable_description)
