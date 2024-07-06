@@ -158,6 +158,11 @@ def complete_value(master_data_dict):
     if search_barcode_form:
         if filtered_data:
             st.write("Filtered Data:", filtered_data)
+
+
+
+
+
         else:
             st.write("No match found.")
     else:
@@ -246,6 +251,7 @@ else:
 master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index=True)
 
 
+# Data from dict1
 dict1 = [
     {
         "Time (min)": "15",
@@ -322,17 +328,16 @@ dict2 = [
     }
 ]
 
-# Create text inputs for each variable in dict2 and assign values from dict1
+# Create text inputs for each variable in dict2 that are of type "Dependant"
 values_from_dict1 = dict1[0]
 
-st.write(values_from_dict1)
-
 for variable in dict2:
-    variable_name = variable["variable_name"]
-    variable_description = variable["variable_description"]
+    if variable["variable_type"] == "Dependant":
+        variable_name = variable["variable_name"]
+        variable_description = variable["variable_description"]
 
-    # Get the corresponding value from dict1
-    value = values_from_dict1.get(variable_name, "")
+        # Get the corresponding value from dict1
+        value = values_from_dict1.get(variable_name, "")
 
-    # Create a text input in Streamlit
-    st.text_input(label=f"{variable_name} ({variable['variable_type']})", value=value, help=variable_description)
+        # Create a text input in Streamlit
+        st.text_input(label=f"{variable_name} ({variable['variable_type']})", value=value, help=variable_description)
