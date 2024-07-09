@@ -188,11 +188,18 @@ def complete_value(master_data_dict):
             
                 submitted = st.form_submit_button("Submit form", use_container_width=True)
 
-
-
-
         else:
             st.write("No match found.")
+    
+        timestamp = search_barcode_form
+        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+        barcode_path, barcode = generate_barcode(timestamp_str)
+        barcode = str(barcode).split("'")[0]
+        image = Image.open(barcode_path)
+
+        st.image(image, caption='Generated Barcode')
+
+
     else:
         st.write("no hay numero")
 
