@@ -186,7 +186,7 @@ def complete_value(master_data_dict):
                             # Create a text input in Streamlit
                             st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
-                submitted = st.form_submit_button("Submit form", use_container_width=True)
+                submitted = st.form_submit_button("Submit form", use_column_width=None)
 
         else:
             st.write("No match found.")
