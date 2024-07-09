@@ -186,7 +186,7 @@ def complete_value(master_data_dict):
                             # Create a text input in Streamlit
                             st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
-                submitted = st.form_submit_button("Submit form", use_column_width=None)
+                submitted = st.form_submit_button("Submit form", use_container_width=True)
 
         else:
             st.write("No match found.")
@@ -197,7 +197,7 @@ def complete_value(master_data_dict):
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
 
-        st.image(image, caption='Generated Barcode', use_container_width=True)
+        st.image(image, caption='Generated Barcode', use_column_width=True)
 
 
     else:
