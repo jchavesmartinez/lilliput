@@ -191,7 +191,7 @@ def complete_value(master_data_dict):
         else:
             st.write("No match found.")
     
-        timestamp = int(time.time())
+        timestamp = int(search_barcode_form)
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
         barcode_path, barcode = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
