@@ -200,7 +200,7 @@ def complete_value(master_data_dict):
 
 
                 for entry in master_data_dict:
-                    if entry["barcode"] == input_values["barcode"]:
+                    if entry["barcode"] == st(search_barcode_form):
                         entry.update(input_values)
                     
                 st.write(master_data_dict)
