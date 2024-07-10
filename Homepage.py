@@ -157,7 +157,7 @@ def complete_value(master_data_dict):
 
     if search_barcode_form:
         if filtered_data:
-            with st.form("my_form", clear_on_submit=True):
+            with st.form("my_form", clear_on_submit=False):
                 values_from_dict1 = filtered_data[0]
 
                 col1, col2 = st.columns(2)
