@@ -195,12 +195,13 @@ def complete_value(master_data_dict):
             if submitted:
                 input_values = {k: v for k, v in input_values.items() if v != ""}
 
-
                 for entry in master_data_dict:
                     if entry["barcode"] == search_barcode_form:
                         entry.update(input_values)
                     
-                st.write(master_data_dict)
+                update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+
+                st.rerun()
 
 
         else:
