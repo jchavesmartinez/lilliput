@@ -198,7 +198,13 @@ def complete_value(master_data_dict):
 
                 input_values = {k: v for k, v in input_values.items() if v != ""}
 
-                st.write(input_values)
+
+                for entry in master_data_dict:
+                    if entry["barcode"] == input_values["barcode"]:
+                        entry.update(input_values)
+                    
+                st.write(master_data_dict)
+
 
         else:
             st.write("No match found.")
