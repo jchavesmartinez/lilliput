@@ -195,6 +195,9 @@ def complete_value(master_data_dict):
             if submitted:
                 st.write("Form submitted!")
                 st.write("Collected values:")
+
+                input_values = {k: v for k, v in input_values.items() if v != ""}
+
                 st.write(input_values)
 
         else:
