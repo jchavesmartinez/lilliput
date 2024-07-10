@@ -162,6 +162,8 @@ def complete_value(master_data_dict):
 
                 col1, col2 = st.columns(2)
 
+                input_values = {}
+                
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
                         variable_name = variable["variable_name"]
@@ -173,7 +175,8 @@ def complete_value(master_data_dict):
                         with col1:
 
                             # Create a text input in Streamlit
-                            st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+                            input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+
                     elif variable["variable_type"] == "Dependant":
                         variable_name = variable["variable_name"]
                         variable_description = variable["variable_description"]
@@ -184,9 +187,15 @@ def complete_value(master_data_dict):
                         with col2:
 
                             # Create a text input in Streamlit
-                            st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+                            input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
                 submitted = st.form_submit_button("Submit form", use_container_width=True)
+
+
+            if submitted:
+                st.write("Form submitted!")
+                st.write("Collected values:")
+                st.write(input_values)
 
         else:
             st.write("No match found.")
