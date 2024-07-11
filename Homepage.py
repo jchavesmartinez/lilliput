@@ -360,7 +360,7 @@ else:
 master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index=True, use_container_width=True,
     column_config={
         "file": st.column_config.LinkColumn(
-            "App Creator", display_text="Open PDF"
+            "Barcode file", display_text="Open PDF"
         ),
     })
 
