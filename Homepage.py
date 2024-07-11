@@ -10,6 +10,8 @@ import numpy as np
 from streamlit_dynamic_filters import DynamicFilters
 from barcode import EAN13
 from barcode.writer import ImageWriter
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 from PIL import Image
 import time
 
