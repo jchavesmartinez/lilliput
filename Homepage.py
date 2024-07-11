@@ -139,8 +139,6 @@ def new_value(master_data_dict):
 
         st.image(image, caption='Generated Barcode')
 
-        st.write(pdf_bytes)
-
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
 
@@ -158,8 +156,10 @@ def new_value(master_data_dict):
 
     if submitted:
 
-        file_id=upload_to_google_drive(pdf_bytes, invoice_file.name, '1zoGOTnkXvc1JVzLx9RseMkWVnvi7HNVn', credentials)
+        file_id=upload_to_google_drive(pdf_bytes, barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
         file_id="https://drive.google.com/file/d/"+str(file_id)
+
+        st.write(file_id)
 
         responses['barcode']=st.session_state.barcode
         master_data_dict.append(responses)
