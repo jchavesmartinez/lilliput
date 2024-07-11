@@ -141,6 +141,8 @@ def new_value(master_data_dict):
 
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
+        if 'pdf_bytes' not in st.session_state:
+            st.session_state['pdf_bytes'] = pdf_bytes
 
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
@@ -156,7 +158,7 @@ def new_value(master_data_dict):
 
     if submitted:
 
-        file_id=upload_to_google_drive(pdf_bytes, barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
+        file_id=upload_to_google_drive(st.session_state.pdf_bytes, st.session_state.barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
         file_id="https://drive.google.com/file/d/"+str(file_id)
 
         responses['file']=file_id
