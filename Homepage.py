@@ -357,6 +357,11 @@ if search_barcode:
 else:
     filtered_df = master_data_df
 
-master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index=True, use_container_width=True)
+master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index=True, use_container_width=True
+    column_config={
+        "file": st.column_config.LinkColumn(
+            "App Creator", display_text="Open PDF"
+        ),
+    })
 
 
