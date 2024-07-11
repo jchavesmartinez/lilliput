@@ -265,7 +265,7 @@ def complete_value(master_data_dict):
             st.write("No match found.")
     
         timestamp = int(search_barcode_form)
-        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+        timestamp_str = str(timestamp).zfill(13)  # Pad the timestamp to ensure it's 12 digits
         barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
