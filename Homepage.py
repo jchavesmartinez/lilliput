@@ -46,6 +46,43 @@ credentials = {
 
 #---------------------------- Funciones generales --------------------------------
 
+def upload_to_google_drive(bytes_data, file_name, folder_id, service_account_info):
+
+  credentials_pdf = service_account.Credentials.from_service_account_info(service_account_info,scopes=['https://www.googleapis.com/auth/drive'])
+
+  # Build the Drive service
+  drive_service = build('drive', 'v3', credentials=credentials_pdf)
+
+  # Create BytesIO object from bytes_data
+  bytes_io = BytesIO(bytes_data)
+  # File metadata
+  file_metadata = {
+      'name': file_name,
+      'parents': [folder_id]
+  }
+
+  try:
+    # Create a media object from bytes_data
+      media = MediaIoBaseUpload(BytesIO(bytes_data), mimetype='application/pdf')
+
+  
+      # Upload file to Google Drive
+      file = drive_service.files().create(
+          body=file_metadata,
+          media_body=media,
+          fields='id'
+      ).execute()
+        
+      file_id=file.get('id')
+
+      return file_id
+
+  except Exception as e:
+      st.write("File not compatible")
+      st.write(str(e))
+
+      file_id="https://drive.google.com/file/d/1hD5g5tymJLDnT-gh4g7NIXiOyvswqqNm/view?usp=sharing"
+
 def read_file_googledrive(credentials,file_id):
 
     try:
@@ -74,7 +111,15 @@ def generate_barcode(number):
     number = str(number).zfill(12)
     barcode = EAN13(number, writer=ImageWriter())
     barcode.save("barcode")
-    return "barcode.png" , barcode
+
+
+    pdf_filename = "barcode.pdf"
+    c = canvas.Canvas(pdf_filename, pagesize=letter)
+    c.drawImage(barcode_filename, 72, 720, width=200, height=100)  # Adjust the position and size as needed
+    c.showPage()
+    c.save()
+
+    return "barcode.png" , barcode , pdf_filename
 
 @st.experimental_dialog("New experiment")
 def new_value(master_data_dict):
@@ -104,6 +149,11 @@ def new_value(master_data_dict):
         submitted = st.form_submit_button("Submit form", use_container_width=True)
 
     if submitted:
+
+
+        bytes_data = invoice_file.getvalue()
+        file_id=upload_to_google_drive(bytes_data, invoice_file.name, '1zoGOTnkXvc1JVzLx9RseMkWVnvi7HNVn', credentials)
+        file_id="https://drive.google.com/file/d/"+str(file_id)
 
         responses['barcode']=st.session_state.barcode
         master_data_dict.append(responses)
@@ -219,42 +269,6 @@ def complete_value(master_data_dict):
     else:
         st.write("no hay numero")
 
-def upload_to_google_drive(bytes_data, file_name, folder_id, service_account_info):
-
-  credentials_pdf = service_account.Credentials.from_service_account_info(service_account_info,scopes=['https://www.googleapis.com/auth/drive'])
-
-  # Build the Drive service
-  drive_service = build('drive', 'v3', credentials=credentials_pdf)
-
-  # Create BytesIO object from bytes_data
-  bytes_io = BytesIO(bytes_data)
-  # File metadata
-  file_metadata = {
-      'name': file_name,
-      'parents': [folder_id]
-  }
-
-  try:
-    # Create a media object from bytes_data
-      media = MediaIoBaseUpload(BytesIO(bytes_data), mimetype='application/pdf')
-
-  
-      # Upload file to Google Drive
-      file = drive_service.files().create(
-          body=file_metadata,
-          media_body=media,
-          fields='id'
-      ).execute()
-        
-      file_id=file.get('id')
-
-      return file_id
-
-  except Exception as e:
-      st.write("File not compatible")
-      st.write(str(e))
-
-      file_id="https://drive.google.com/file/d/1hD5g5tymJLDnT-gh4g7NIXiOyvswqqNm/view?usp=sharing"
 
   
 
