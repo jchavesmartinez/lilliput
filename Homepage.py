@@ -275,7 +275,7 @@ def complete_value(master_data_dict):
 
 
     else:
-        st.write("no hay numero")
+        st.write("No value typed")
 
 
 #---------------------------- Codigo general --------------------------------
