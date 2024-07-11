@@ -332,6 +332,7 @@ master_data_df = pd.DataFrame(master_data_dict)
 if st.button("Insert a new value (independent variables)", use_container_width=True):
     try:
         del st.session_state['barcode']
+        del st.session_state['pdf_bytes']
     except:
         print("nothing")
     
