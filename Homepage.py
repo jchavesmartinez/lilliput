@@ -266,6 +266,11 @@ def complete_value(master_data_dict):
                 st.subheader("Are you sure you want to delete entry: "+str(search_barcode_form))
                 delete2 = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
 
+                if delete2:
+                    master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
+                    update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+
+
 
         else:
             st.write("No match found.")
