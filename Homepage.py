@@ -263,7 +263,7 @@ def complete_value(master_data_dict):
                 st.rerun()
 
             if delete:
-                delete2 = st.form_submit_button("Delete entry2", use_container_width=True, type="secondary")
+                delete2 = st.button("Delete entry2", use_container_width=True, type="secondary")
 
 
         else:
