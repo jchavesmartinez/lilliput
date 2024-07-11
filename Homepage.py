@@ -159,8 +159,7 @@ def new_value(master_data_dict):
         file_id=upload_to_google_drive(pdf_bytes, barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
         file_id="https://drive.google.com/file/d/"+str(file_id)
 
-        st.write(file_id)
-
+        responses['file']=file_id
         responses['barcode']=st.session_state.barcode
         master_data_dict.append(responses)
         update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
