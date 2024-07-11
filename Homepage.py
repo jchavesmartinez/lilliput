@@ -219,7 +219,43 @@ def complete_value(master_data_dict):
     else:
         st.write("no hay numero")
 
-    
+def upload_to_google_drive(bytes_data, file_name, folder_id, service_account_info):
+
+  credentials_pdf = service_account.Credentials.from_service_account_info(service_account_info,scopes=['https://www.googleapis.com/auth/drive'])
+
+  # Build the Drive service
+  drive_service = build('drive', 'v3', credentials=credentials_pdf)
+
+  # Create BytesIO object from bytes_data
+  bytes_io = BytesIO(bytes_data)
+  # File metadata
+  file_metadata = {
+      'name': file_name,
+      'parents': [folder_id]
+  }
+
+  try:
+    # Create a media object from bytes_data
+      media = MediaIoBaseUpload(BytesIO(bytes_data), mimetype='application/pdf')
+
+  
+      # Upload file to Google Drive
+      file = drive_service.files().create(
+          body=file_metadata,
+          media_body=media,
+          fields='id'
+      ).execute()
+        
+      file_id=file.get('id')
+
+      return file_id
+
+  except Exception as e:
+      st.write("File not compatible")
+      st.write(str(e))
+
+      file_id="https://drive.google.com/file/d/1hD5g5tymJLDnT-gh4g7NIXiOyvswqqNm/view?usp=sharing"
+
   
 
 #---------------------------- Codigo general --------------------------------
