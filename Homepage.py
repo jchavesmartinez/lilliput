@@ -113,6 +113,7 @@ def generate_barcode(number):
     number = str(number).zfill(12)
     barcode = EAN13(number, writer=ImageWriter())
     barcode.save("barcode")
+    barcode_filename="barcode.png"
 
 
     pdf_filename = "barcode.pdf"
@@ -121,7 +122,7 @@ def generate_barcode(number):
     c.showPage()
     c.save()
 
-    return "barcode.png" , barcode , pdf_filename
+    return barcode_filename , barcode , pdf_filename
 
 @st.experimental_dialog("New experiment")
 def new_value(master_data_dict):
