@@ -265,7 +265,7 @@ def complete_value(master_data_dict):
             st.write("No match found.")
     
         timestamp = int(search_barcode_form)
-        timestamp_str = str(timestamp).zfill(13)  # Pad the timestamp to ensure it's 12 digits
+        timestamp_str = str(timestamp).zfill(13)
         barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
@@ -276,8 +276,6 @@ def complete_value(master_data_dict):
     else:
         st.write("no hay numero")
 
-
-  
 
 #---------------------------- Codigo general --------------------------------
 
@@ -347,8 +345,6 @@ if st.button("Update a value (dependent variables)", use_container_width=True):
     complete_value(master_data_dict)
 
 
-
-
 search_barcode = st.text_input("Search by barcode")
 
 # Filter the dataframe based on the input
@@ -368,6 +364,6 @@ master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index
         "file": st.column_config.LinkColumn(
             "Barcode file", display_text="Open PDF"
         ),
-    })
+    }, key="master_data_df_edit")
 
 
