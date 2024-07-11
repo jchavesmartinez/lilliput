@@ -127,7 +127,7 @@ def new_value(master_data_dict):
     with st.form("my_form", clear_on_submit=True):
         timestamp = int(time.time())
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode = generate_barcode(timestamp_str)
+        barcode_path, barcode, pdf_filename = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
 
@@ -259,7 +259,7 @@ def complete_value(master_data_dict):
     
         timestamp = int(search_barcode_form)
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode = generate_barcode(timestamp_str)
+        barcode_path, barcode, pdf_filename = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
 
