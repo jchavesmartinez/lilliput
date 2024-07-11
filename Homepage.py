@@ -116,13 +116,15 @@ def generate_barcode(number):
     barcode_filename="barcode.png"
 
 
-    pdf_filename = "barcode.pdf"
-    c = canvas.Canvas(pdf_filename, pagesize=letter)
+    pdf_buffer = io.BytesIO()
+    c = canvas.Canvas(pdf_buffer, pagesize=letter)
     c.drawImage(barcode_filename, 72, 720, width=200, height=100)  # Adjust the position and size as needed
     c.showPage()
     c.save()
+    
+    pdf_bytes = pdf_buffer.getvalue()
 
-    return barcode_filename , barcode , pdf_filename
+    return barcode_filename , barcode , pdf_bytes
 
 @st.experimental_dialog("New experiment")
 def new_value(master_data_dict):
@@ -130,11 +132,13 @@ def new_value(master_data_dict):
     with st.form("my_form", clear_on_submit=True):
         timestamp = int(time.time())
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode, pdf_filename = generate_barcode(timestamp_str)
+        barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
 
         st.image(image, caption='Generated Barcode')
+
+        st.write(pdf_bytes)
 
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
@@ -153,9 +157,7 @@ def new_value(master_data_dict):
 
     if submitted:
 
-
-        bytes_data = invoice_file.getvalue()
-        file_id=upload_to_google_drive(bytes_data, invoice_file.name, '1zoGOTnkXvc1JVzLx9RseMkWVnvi7HNVn', credentials)
+        file_id=upload_to_google_drive(pdf_bytes, invoice_file.name, '1zoGOTnkXvc1JVzLx9RseMkWVnvi7HNVn', credentials)
         file_id="https://drive.google.com/file/d/"+str(file_id)
 
         responses['barcode']=st.session_state.barcode
@@ -262,7 +264,7 @@ def complete_value(master_data_dict):
     
         timestamp = int(search_barcode_form)
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode, pdf_filename = generate_barcode(timestamp_str)
+        barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
         barcode = str(barcode).split("'")[0]
         image = Image.open(barcode_path)
 
