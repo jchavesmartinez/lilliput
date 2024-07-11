@@ -367,3 +367,4 @@ master_data_df_edit = st.data_editor(filtered_df, num_rows="dynamic", hide_index
     }, key="master_data_df_edit")
 
 
+st.write(st.session_state["my_key"])
