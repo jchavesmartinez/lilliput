@@ -246,8 +246,11 @@ def complete_value(master_data_dict):
                             # Create a text input in Streamlit
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
-                submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
                 delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
+                st.markdown("---")
+                st.markdown("---")
+                submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
+                
 
 
             if submitted:
