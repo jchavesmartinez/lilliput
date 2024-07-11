@@ -247,6 +247,7 @@ def complete_value(master_data_dict):
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
                 submitted = st.form_submit_button("Submit form", use_container_width=True)
+                delete = st.form_submit_button("Delete entry", use_container_width=True)
 
 
             if submitted:
