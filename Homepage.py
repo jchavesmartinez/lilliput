@@ -264,7 +264,7 @@ def complete_value(master_data_dict):
 
             if delete:
                 st.write("Are you sure you want to delete entry: "+str(search_barcode_form))
-                delete2 = st.button("Delete entry: "+str(search_barcode_form), use_container_width=True, type="secondary")
+                delete2 = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
 
 
         else:
