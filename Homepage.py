@@ -271,6 +271,8 @@ def complete_value(master_data_dict):
 
                 delete = st.button("Delete entry", use_container_width=True, type="secondary")
 
+                if delete:
+                    st.session_state['delete_barcode'] = 'Yes'
 
             elif st.session_state.delete_barcode == "Yes":
 
