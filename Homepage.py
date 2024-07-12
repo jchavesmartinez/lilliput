@@ -363,10 +363,10 @@ if search_barcode:
         col1d, col2d = st.columns(2)
 
         with col1d:
-            delete_y = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
+            delete_y = st.button("Delete entry: " + str(search_barcode), use_container_width=True, type="primary")
         
         with col2d:
-            delete_n = st.button("Do not delete entry: " + str(search_barcode_form), use_container_width=True, type="secondary")
+            delete_n = st.button("Do not delete entry: " + str(search_barcode), use_container_width=True, type="secondary")
 
 
 else:
