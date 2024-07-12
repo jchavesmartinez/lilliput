@@ -284,7 +284,7 @@ def complete_value(master_data_dict):
                     with col2d:
                         delete_n = st.button("Do not delete entry: " + str(search_barcode_form), use_container_width=True, type="secondary")
                         if delete_n:
-                        st.session_state['delete_barcode'] = 'No'
+                            st.session_state['delete_barcode'] = 'No'
 
                     
 
