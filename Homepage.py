@@ -357,7 +357,7 @@ search_barcode = st.text_input("Search by barcode")
 # Filter the dataframe based on the input
 if search_barcode:
     filtered_df = master_data_df[master_data_df['barcode'].str.contains(search_barcode)]
-    barcode_delete= st.button("Delete entry: "+str(search_barcode))
+    barcode_delete= st.button("Delete entry: "+str(search_barcode), use_container_width=True)
 else:
     filtered_df = master_data_df
 
