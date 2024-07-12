@@ -257,7 +257,7 @@ def complete_value(master_data_dict):
                 
                     
                     submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
-                    delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
+                    
 
 
                 if submitted:
@@ -270,11 +270,13 @@ def complete_value(master_data_dict):
                     update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
 
                     st.rerun()
+                                    
+            elif st.session_state.delete_barcode == "Yes":
+
+                delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
 
                 if delete:
                     st.session_state['delete_barcode'] = 'Yes'
-                                    
-            elif st.session_state.delete_barcode == "Yes":
 
 
                 col1d, col2d = st.columns(2)
