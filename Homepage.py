@@ -119,7 +119,7 @@ def generate_barcode(number):
 
     pdf_buffer = io.BytesIO()
     c = canvas.Canvas(pdf_buffer, pagesize=(623, 380))
-    c.drawImage(barcode_filename, 50, 0, width=523, height=280)  # Adjust the position and size as needed
+    c.drawImage(barcode_filename, 50, 0, width=192, height=90)  # Adjust the position and size as needed
     c.showPage()
     c.save()
     
@@ -303,7 +303,6 @@ def delete_value(master_data_dict,search_barcode):
             do_not_delete=st.form_submit_button("Do not delete ", use_container_width=True, type="secondary")
             if do_not_delete:
                 st.rerun()
-
 
 #---------------------------- Codigo general --------------------------------
 
