@@ -365,11 +365,11 @@ if search_barcode:
     barcode_delete= st.button("Delete entry: "+str(search_barcode), use_container_width=True, type="primary")
     if barcode_delete:
         st.session_state['delete_barcode'] = 'Yes'
-        
-st.write(st.session_state.delete_barcode)
-
+    
 else:
     filtered_df = master_data_df
+
+st.write(st.session_state.delete_barcode)
 
 cols_to_move = ['barcode', 'file']
 
