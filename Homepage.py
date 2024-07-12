@@ -283,7 +283,7 @@ def complete_value(master_data_dict):
     else:
         st.write("No value typed")
 
-@st.experimental_dialog("Delete experiment "+ str(search_barcode), width="large")
+@st.experimental_dialog("Delete experiment")
 def delete_value(master_data_dict,search_barcode):
 
     with st.form("my_form", clear_on_submit=False):
