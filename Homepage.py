@@ -268,6 +268,9 @@ def complete_value(master_data_dict):
 
                 barcode_delete=st.text_input("Type the barcode to be deleted")
 
+                if barcode_delete:
+                    st.write(barcode_delete)
+
 
 
 
