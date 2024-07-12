@@ -287,9 +287,14 @@ def complete_value(master_data_dict):
 def delete_value(master_data_dict):
 
     with st.form("my_form", clear_on_submit=False):
-    
-        delete=st.form_submit_button("delete", use_container_width=True, type="primary")
-        do_not_delete=st.form_submit_button("do not delete", use_container_width=True, type="secondary")
+        
+        col1d, col2d = st.columns(2)
+
+        with col1d:
+            delete=st.form_submit_button("delete", use_container_width=True, type="primary")
+
+        with col2d:
+            do_not_delete=st.form_submit_button("do not delete", use_container_width=True, type="secondary")
 
 
 #---------------------------- Codigo general --------------------------------
