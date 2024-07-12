@@ -258,8 +258,6 @@ def complete_value(master_data_dict):
                     
                     submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
                     
-
-
                 if submitted:
                     input_values = {k: v for k, v in input_values.items() if v != ""}
 
@@ -270,7 +268,10 @@ def complete_value(master_data_dict):
                     update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
 
                     st.rerun()
-                                    
+
+                delete = st.button("Delete entry", use_container_width=True, type="secondary")
+
+
             elif st.session_state.delete_barcode == "Yes":
 
                 st.write("wenas")
@@ -280,9 +281,6 @@ def complete_value(master_data_dict):
         else:
             st.write("No match found.")
     
-        
-        delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
-        
         
         timestamp = int(search_barcode_form)
         timestamp_str = str(timestamp).zfill(13)
