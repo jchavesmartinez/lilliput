@@ -368,6 +368,8 @@ if search_barcode:
             #master_data_dict = [entry for entry in master_data_dict if entry['barcode'] != str(search_barcode)]
             #st.write(master_data_dict)
             st.write(delete_y)
+            if delete_y:
+                st.write("enas")
         
         with col2d:
             delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
