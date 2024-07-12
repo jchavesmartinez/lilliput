@@ -109,7 +109,7 @@ def read_file_googledrive(credentials,file_id):
     
     return text_content
 
-def generate_barcode(number, dpi=700):
+def generate_barcode(number, dpi=450):
     # Ensure the number is a 12-digit string
     number = str(number).zfill(12)
     
