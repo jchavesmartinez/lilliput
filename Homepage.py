@@ -373,7 +373,7 @@ if search_barcode:
     filtered_df = master_data_df[master_data_df['barcode'].str.contains(search_barcode)]
     barcode_delete= st.button("Delete entry: "+str(search_barcode), use_container_width=True, type="primary")
     if barcode_delete:
-        delete_value(master_data_dict)
+        delete_value(master_data_dict, search_barcode)
 
     
 else:
