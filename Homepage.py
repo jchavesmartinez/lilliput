@@ -366,7 +366,7 @@ if search_barcode:
     if barcode_delete:
         st.session_state['delete_barcode'] = 'Yes'
 
-    if st.session_state['delete_barcode'] = 'Yes':
+    if st.session_state['delete_barcode'] == 'Yes':
 
         col1d, col2d = st.columns(2)
 
