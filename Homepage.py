@@ -119,7 +119,7 @@ def generate_barcode(number):
 
     pdf_buffer = io.BytesIO()
     c = canvas.Canvas(pdf_buffer, pagesize=(623, 380))
-    c.drawImage(barcode_filename, 50, 0, width=192, height=90)  # Adjust the position and size as needed
+    c.drawImage(barcode_filename, 50, 0, width=523, height=261.5)  # Adjust the position and size as needed
     c.showPage()
     c.save()
     
