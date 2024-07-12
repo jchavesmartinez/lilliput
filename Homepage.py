@@ -378,6 +378,8 @@ if search_barcode:
         
         with col2d:
             delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
+            st.session_state['delete_barcode'] = 'No'
+
     
 else:
     filtered_df = master_data_df
