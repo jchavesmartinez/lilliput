@@ -109,23 +109,34 @@ def read_file_googledrive(credentials,file_id):
     
     return text_content
 
-def generate_barcode(number):
+def generate_barcode(number, dpi=300):
     # Ensure the number is a 12-digit string
     number = str(number).zfill(12)
+    
+    # Generate barcode with high DPI
     barcode = EAN13(number, writer=ImageWriter())
-    barcode.save("barcode")
-    barcode_filename="barcode.png"
+    
+    # Create buffer to save barcode image
+    buffer = io.BytesIO()
+    barcode.write(buffer, options={"dpi": dpi})
+    buffer.seek(0)
+    
+    # Save barcode image to file
+    with open("barcode.png", "wb") as f:
+        f.write(buffer.getvalue())
+    
+    barcode_filename = "barcode.png"
 
-
+    # Create PDF with high definition barcode image
     pdf_buffer = io.BytesIO()
     c = canvas.Canvas(pdf_buffer, pagesize=(524, 262))
-    c.drawImage(barcode_filename, 0, 0, width=523, height=280)  # Adjust the position and size as needed
+    c.drawImage(barcode_filename, 0, 0, width=523, height=261.5)  # Adjust the position and size as needed
     c.showPage()
     c.save()
     
     pdf_bytes = pdf_buffer.getvalue()
 
-    return barcode_filename , barcode , pdf_bytes
+    return barcode_filename, barcode, pdf_bytes
 
 @st.experimental_dialog("New experiment")
 def new_value(master_data_dict):
