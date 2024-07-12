@@ -397,15 +397,20 @@ if search_barcode:
 else:
     filtered_df = master_data_df
 
-cols_to_move = ['barcode', 'file']
 
-# Reorder the columns
-cols = cols_to_move + [col for col in filtered_df.columns if col not in cols_to_move]
-filtered_df = filtered_df[cols]
+try:
+    cols_to_move = ['barcode', 'file']
 
-master_data_df_edit = st.data_editor(filtered_df, num_rows="fixed", hide_index=True, use_container_width=True,
-    column_config={
-        "file": st.column_config.LinkColumn(
-            "Barcode file", display_text="Open PDF"
-        ),
-    })
+    # Reorder the columns
+    cols = cols_to_move + [col for col in filtered_df.columns if col not in cols_to_move]
+    filtered_df = filtered_df[cols]
+
+    master_data_df_edit = st.data_editor(filtered_df, num_rows="fixed", hide_index=True, use_container_width=True,
+        column_config={
+            "file": st.column_config.LinkColumn(
+                "Barcode file", display_text="Open PDF"
+            ),
+        })
+
+except:
+    print("prueba")
