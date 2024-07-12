@@ -280,6 +280,10 @@ def complete_value(master_data_dict):
         else:
             st.write("No match found.")
     
+        
+        delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
+        
+        
         timestamp = int(search_barcode_form)
         timestamp_str = str(timestamp).zfill(13)
         barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
