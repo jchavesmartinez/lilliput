@@ -283,13 +283,13 @@ def complete_value(master_data_dict):
     else:
         st.write("No value typed")
 
-@st.experimental_dialog("Update experiment", width="large")
+@st.experimental_dialog("Delete experiment", width="large")
 def delete_value(master_data_dict):
 
     with st.form("my_form", clear_on_submit=False):
     
-        delete=st.form_submit_button("delete")
-        do_not_delete=st.form_submit_button("do not delete")
+        delete=st.form_submit_button("delete", use_container_width=True, type="primary")
+        do_not_delete=st.form_submit_button("do not delete", use_container_width=True, type="secondary")
 
 
 #---------------------------- Codigo general --------------------------------
