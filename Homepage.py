@@ -293,8 +293,16 @@ def delete_value(master_data_dict,search_barcode):
         with col1d:
             delete=st.form_submit_button("Delete ", use_container_width=True, type="primary")
 
+            if delete:
+                master_data_dict = [entry for entry in master_data_dict if entry['barcode'] != str(search_barcode)]
+                update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+                st.rerun()
+
+
         with col2d:
             do_not_delete=st.form_submit_button("Do not delete ", use_container_width=True, type="secondary")
+            if do_not_delete:
+                st.rerun()
 
 
 #---------------------------- Codigo general --------------------------------
