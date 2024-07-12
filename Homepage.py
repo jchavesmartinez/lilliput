@@ -378,7 +378,8 @@ if search_barcode:
         
         with col2d:
             delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
-            st.session_state['delete_barcode'] = 'No'
+            if delete_n:
+                st.session_state['delete_barcode'] = 'No'
 
     
 else:
