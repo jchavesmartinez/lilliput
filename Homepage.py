@@ -212,51 +212,44 @@ def complete_value(master_data_dict):
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
     filtered_data = filter_by_barcode(search_barcode_form)
 
-    if 'delete_barcode' not in st.session_state:
-        st.session_state['delete_barcode'] = 'No'
-
-    st.write(st.session_state.delete_barcode)
-
     if search_barcode_form:
 
         if filtered_data:
             
-            if st.session_state.delete_barcode == "No":
+            with st.form("my_form", clear_on_submit=False):
+                values_from_dict1 = filtered_data[0]
 
-                with st.form("my_form", clear_on_submit=False):
-                    values_from_dict1 = filtered_data[0]
+                col1, col2 = st.columns(2)
 
-                    col1, col2 = st.columns(2)
-
-                    input_values = {}
-                    
-                    for variable in variables:
-                        if variable["variable_type"] == "Independant":
-                            variable_name = variable["variable_name"]
-                            variable_description = variable["variable_description"]
-
-                            # Get the corresponding value from dict1
-                            value = values_from_dict1.get(variable_name, "")
-
-                            with col1:
-
-                                # Create a text input in Streamlit
-                                input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
-
-                        elif variable["variable_type"] == "Dependant":
-                            variable_name = variable["variable_name"]
-                            variable_description = variable["variable_description"]
-
-                            # Get the corresponding value from dict1
-                            value = values_from_dict1.get(variable_name, "")
-
-                            with col2:
-
-                                # Create a text input in Streamlit
-                                input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+                input_values = {}
                 
-                    
-                    submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
+                for variable in variables:
+                    if variable["variable_type"] == "Independant":
+                        variable_name = variable["variable_name"]
+                        variable_description = variable["variable_description"]
+
+                        # Get the corresponding value from dict1
+                        value = values_from_dict1.get(variable_name, "")
+
+                        with col1:
+
+                            # Create a text input in Streamlit
+                            input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+
+                    elif variable["variable_type"] == "Dependant":
+                        variable_name = variable["variable_name"]
+                        variable_description = variable["variable_description"]
+
+                        # Get the corresponding value from dict1
+                        value = values_from_dict1.get(variable_name, "")
+
+                        with col2:
+
+                            # Create a text input in Streamlit
+                            input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+            
+                
+                submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
                     
                 if submitted:
                     input_values = {k: v for k, v in input_values.items() if v != ""}
@@ -272,14 +265,9 @@ def complete_value(master_data_dict):
                 delete = st.button("Delete entry", use_container_width=True, type="secondary")
 
                 if delete:
-                    st.session_state['delete_barcode'] = 'Yes'
 
                     barcode_delete=st.text_input("Type the barcode to be deleted")
 
-
-            elif st.session_state.delete_barcode == "Yes":
-
-                st.write("wenas")
 
 
 
