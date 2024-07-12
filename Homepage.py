@@ -272,7 +272,7 @@ def complete_value(master_data_dict):
                     st.rerun()
 
                 if delete:
-                    st.subheader("Are you sure you want to delete entry: "+str(search_barcode_form))
+                    st.session_state['delete_barcode'] = 'Yes'
                                     
             elif st.session_state.delete_barcode == "Yes":
 
