@@ -277,14 +277,14 @@ def complete_value(master_data_dict):
 
                     st.session_state['delete_barcode'] = 'Yes'
 
-                    
+                
+            else:
 
-
-                    if delete2:
-                        master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
-                        st.write(master_data_dict)
-                        #update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-                        #st.rerun()
+                if delete2:
+                    master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
+                    st.write(master_data_dict)
+                    #update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+                    #st.rerun()
 
 
 
