@@ -213,73 +213,76 @@ def complete_value(master_data_dict):
     filtered_data = filter_by_barcode(search_barcode_form)
 
     if 'delete_barcode' not in st.session_state:
-        st.session_state['delete_barcode'] = 'no'
+        st.session_state['delete_barcode'] = 'No'
 
     st.write(st.session_state.delete_barcode)
 
     if search_barcode_form:
 
         if filtered_data:
-            with st.form("my_form", clear_on_submit=False):
-                values_from_dict1 = filtered_data[0]
-
-                col1, col2 = st.columns(2)
-
-                input_values = {}
-                
-                for variable in variables:
-                    if variable["variable_type"] == "Independant":
-                        variable_name = variable["variable_name"]
-                        variable_description = variable["variable_description"]
-
-                        # Get the corresponding value from dict1
-                        value = values_from_dict1.get(variable_name, "")
-
-                        with col1:
-
-                            # Create a text input in Streamlit
-                            input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
-
-                    elif variable["variable_type"] == "Dependant":
-                        variable_name = variable["variable_name"]
-                        variable_description = variable["variable_description"]
-
-                        # Get the corresponding value from dict1
-                        value = values_from_dict1.get(variable_name, "")
-
-                        with col2:
-
-                            # Create a text input in Streamlit
-                            input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
+            if st.session_state.delete_barcode == "No":
                 
-                submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
-                delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
+                with st.form("my_form", clear_on_submit=False):
+                    values_from_dict1 = filtered_data[0]
 
+                    col1, col2 = st.columns(2)
 
-            if submitted:
-                input_values = {k: v for k, v in input_values.items() if v != ""}
-
-                for entry in master_data_dict:
-                    if entry["barcode"] == search_barcode_form:
-                        entry.update(input_values)
+                    input_values = {}
                     
-                update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+                    for variable in variables:
+                        if variable["variable_type"] == "Independant":
+                            variable_name = variable["variable_name"]
+                            variable_description = variable["variable_description"]
 
-                st.rerun()
+                            # Get the corresponding value from dict1
+                            value = values_from_dict1.get(variable_name, "")
 
-            if delete:
-                st.subheader("Are you sure you want to delete entry: "+str(search_barcode_form))
-                delete2 = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
+                            with col1:
 
+                                # Create a text input in Streamlit
+                                input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+
+                        elif variable["variable_type"] == "Dependant":
+                            variable_name = variable["variable_name"]
+                            variable_description = variable["variable_description"]
+
+                            # Get the corresponding value from dict1
+                            value = values_from_dict1.get(variable_name, "")
+
+                            with col2:
+
+                                # Create a text input in Streamlit
+                                input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
                 
+                    
+                    submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
+                    delete = st.form_submit_button("Delete entry", use_container_width=True, type="secondary")
 
 
-                if delete2:
-                    master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
-                    st.write(master_data_dict)
-                    #update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-                    #st.rerun()
+                if submitted:
+                    input_values = {k: v for k, v in input_values.items() if v != ""}
+
+                    for entry in master_data_dict:
+                        if entry["barcode"] == search_barcode_form:
+                            entry.update(input_values)
+                        
+                    update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+
+                    st.rerun()
+
+                if delete:
+                    st.subheader("Are you sure you want to delete entry: "+str(search_barcode_form))
+                    delete2 = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
+
+                    
+
+
+                    if delete2:
+                        master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
+                        st.write(master_data_dict)
+                        #update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+                        #st.rerun()
 
 
 
