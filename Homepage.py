@@ -365,6 +365,19 @@ if search_barcode:
     barcode_delete= st.button("Delete entry: "+str(search_barcode), use_container_width=True, type="primary")
     if barcode_delete:
         st.session_state['delete_barcode'] = 'Yes'
+
+    if st.session_state['delete_barcode'] = 'Yes':
+
+        col1d, col2d = st.columns(2)
+
+        with col1d:
+            delete_y = st.button("Yes", use_container_width=True, type="primary", key="yes_delete")
+            if delete_y:
+                master_data_dict = [entry for entry in master_data_dict if entry['barcode'] != str(search_barcode)]
+                st.write(master_data_dict)
+        
+        with col2d:
+            delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
     
 else:
     filtered_df = master_data_df
