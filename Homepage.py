@@ -278,7 +278,7 @@ def complete_value(master_data_dict):
                     st.session_state['delete_barcode'] = 'Yes'
 
                 
-            else:
+            elif st.session_state.delete_barcode == "Yes":
 
                 st.write("wenas")
                 #master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
