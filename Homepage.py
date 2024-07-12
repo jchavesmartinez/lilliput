@@ -283,7 +283,7 @@ def complete_value(master_data_dict):
     else:
         st.write("No value typed")
 
-@st.experimental_dialog("Delete experiment", width="large")
+@st.experimental_dialog("Delete experiment "+ str(search_barcode), width="large")
 def delete_value(master_data_dict,search_barcode):
 
     with st.form("my_form", clear_on_submit=False):
@@ -291,10 +291,10 @@ def delete_value(master_data_dict,search_barcode):
         col1d, col2d = st.columns(2)
 
         with col1d:
-            delete=st.form_submit_button("Delete " +str(search_barcode), use_container_width=True, type="primary")
+            delete=st.form_submit_button("Delete ", use_container_width=True, type="primary")
 
         with col2d:
-            do_not_delete=st.form_submit_button("Do not delete " + str(search_barcode), use_container_width=True, type="secondary")
+            do_not_delete=st.form_submit_button("Do not delete ", use_container_width=True, type="secondary")
 
 
 #---------------------------- Codigo general --------------------------------
