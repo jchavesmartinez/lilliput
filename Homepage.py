@@ -212,7 +212,13 @@ def complete_value(master_data_dict):
     search_barcode_form = st.text_input("Search by barcode", key="search_barcode_form")
     filtered_data = filter_by_barcode(search_barcode_form)
 
+    if 'delete_barcode' not in st.session_state:
+        st.session_state['delete_barcode'] = 'no'
+
+    st.write(st.session_state.delete_barcode)
+
     if search_barcode_form:
+
         if filtered_data:
             with st.form("my_form", clear_on_submit=False):
                 values_from_dict1 = filtered_data[0]
@@ -266,7 +272,8 @@ def complete_value(master_data_dict):
                 st.subheader("Are you sure you want to delete entry: "+str(search_barcode_form))
                 delete2 = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
 
-                st.write(master_data_dict)
+                
+
 
                 if delete2:
                     master_data_dict = [entry for entry in data if entry['barcode'] != str(search_barcode_form)]
