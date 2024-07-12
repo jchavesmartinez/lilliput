@@ -369,6 +369,8 @@ if search_barcode:
         
         with col2d:
             delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
+            if delete_n:
+                st.write("wenas")
 
 
 else:
