@@ -357,7 +357,7 @@ search_barcode = st.text_input("Search by barcode")
 if 'delete_barcode' not in st.session_state:
     st.session_state['delete_barcode'] = 'No'
 
-    
+st.write(st.session_state.delete_barcode)    
 
 # Filter the dataframe based on the input
 if search_barcode:
@@ -380,12 +380,9 @@ if search_barcode:
             delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
             if delete_n:
                 st.session_state['delete_barcode'] = 'No'
-
     
 else:
     filtered_df = master_data_df
-
-st.write(st.session_state.delete_barcode)
 
 cols_to_move = ['barcode', 'file']
 
