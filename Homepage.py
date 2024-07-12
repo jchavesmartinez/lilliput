@@ -273,26 +273,25 @@ def complete_value(master_data_dict):
 
                 if delete:
                     st.subheader("Are you sure you want to delete entry: "+str(search_barcode_form))
-                                    
+                    
+                    col1d, col2d = st.columns(2)
+
+                    with col1d:
+                        delete_y = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
+                        if delete_y:
+                            st.session_state['delete_barcode'] = 'Yes'
+                    
+                    with col2d:
+                        delete_n = st.button("Do not delete entry: " + str(search_barcode_form), use_container_width=True, type="secondary")
+                        if delete_n:
+                            st.session_state['delete_barcode'] = 'No'
+                    
                     st.session_state['delete_barcode'] = 'Yes'
 
                     
 
                 
             elif st.session_state.delete_barcode == "Yes":
-
-
-                col1d, col2d = st.columns(2)
-
-                with col1d:
-                    delete_y = st.button("Delete entry: " + str(search_barcode_form), use_container_width=True, type="primary")
-                    if delete_y:
-                        st.session_state['delete_barcode'] = 'Yes'
-                
-                with col2d:
-                    delete_n = st.button("Do not delete entry: " + str(search_barcode_form), use_container_width=True, type="secondary")
-                    if delete_n:
-                        st.session_state['delete_barcode'] = 'No'
 
                 st.write(search_barcode_form)
                 #st.session_state['delete_barcode'] = 'No'
