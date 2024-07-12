@@ -363,8 +363,9 @@ if search_barcode:
 
         with col1d:
             delete_y = st.button("Yes", use_container_width=True, type="primary", key="yes_delete")
-            master_data_dict = [entry for entry in master_data_dict if entry['barcode'] != str(search_barcode)]
-            st.write(master_data_dict)
+            if delete_y:
+                master_data_dict = [entry for entry in master_data_dict if entry['barcode'] != str(search_barcode)]
+                st.write(master_data_dict)
         
         with col2d:
             delete_n = st.button("No", use_container_width=True, type="secondary", key="no_delete")
