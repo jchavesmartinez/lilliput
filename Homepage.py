@@ -415,4 +415,4 @@ try:
         })
 
 except:
-    print("prueba")
+    st.write("No data to show")
