@@ -104,7 +104,7 @@ def read_file_googledrive(credentials,file_id):
     except Exception as e:
         print(f"Error: {str(e)}")
         print("No fue posible leer el file")
-        st.write(f"Error: {str(e)}")
+        #st.write(f"Error: {str(e)}")
         text_content=[]
     
     return text_content
