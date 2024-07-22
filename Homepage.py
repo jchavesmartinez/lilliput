@@ -170,7 +170,7 @@ def new_value(master_data_dict):
 
             # Iterate over variables and create a text input for each
             for i in variables:
-                if i['variable_type']=='Independant' and synthesis_methods in i["synthesis_methods"]:
+                if i['variable_type']=='Independant': # and synthesis_methods in i["synthesis_methods"]:
                     responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
             purification_methods = st.selectbox(
