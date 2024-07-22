@@ -167,7 +167,7 @@ def new_value(master_data_dict):
 
             
             responses = {}
-            st.write(synthesis_methods)
+            st.write(synthesis_methods["variable_name"])
 
             # Iterate over variables and create a text input for each
             for i in variables:
