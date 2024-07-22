@@ -248,10 +248,16 @@ def complete_value(master_data_dict):
 
                 input_values = {}
 
+                if values_from_dict1['Purification_methods'] == "Filter 0.2 um":
+                    index=0
+                elif values_from_dict1['Purification_methods'] == "Filter 0.2 um + Ultracentrifugation":
+                    index=1
+                elif values_from_dict1['Purification_methods'] == "Filter 0.2 um + Ultracentrifugation+ dialysis":
+                    index=2
                 
                 with col1:
                     Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
-                    input_values["Purification_methods"] = st.selectbox("Purification Methods",("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=2)
+                    input_values["Purification_methods"] = st.selectbox("Purification Methods",("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=index)
 
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
