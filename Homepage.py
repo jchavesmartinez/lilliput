@@ -156,8 +156,6 @@ def new_value(master_data_dict):
             barcode = str(barcode).split("'")[0]
             image = Image.open(barcode_path)
 
-            st.image(image, caption='Generated Barcode')
-
             if 'barcode' not in st.session_state:
                 st.session_state['barcode'] = barcode
             if 'pdf_bytes' not in st.session_state:
@@ -176,7 +174,9 @@ def new_value(master_data_dict):
                 ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select purification method...")
               
             submitted = st.form_submit_button("Submit form", use_container_width=True)
-        
+
+            st.image(image, caption='Generated Barcode')
+
         if submitted:
 
             file_id=upload_to_google_drive(st.session_state.pdf_bytes, st.session_state.barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
@@ -263,7 +263,6 @@ def complete_value(master_data_dict):
 
                 with col1:
                     input_values["Synthesis_methods"] = st.selectbox("Synthesis Methods",("Hydrothermal","Microwave"),index=index2)
-                    #Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
                     input_values["Purification_methods"] = st.selectbox("Purification Methods",("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=index)
 
                 for variable in variables:
