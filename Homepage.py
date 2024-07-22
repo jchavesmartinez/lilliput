@@ -166,7 +166,7 @@ def new_value(master_data_dict):
             variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
             responses = {}
-            st.write(synthesis_methods)
+            #st.write(synthesis_methods)
 
             # Iterate over variables and create a text input for each
             for i in variables:
