@@ -246,13 +246,13 @@ def complete_value(master_data_dict):
 
                 col1, col2 = st.columns(2)
 
+                input_values = {}
+
 
                 with col1:
                     Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
-                    Purification_methods = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)
+                    input_values[Purification_methods] = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)
 
-                input_values = {}
-                
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
                         
@@ -279,7 +279,8 @@ def complete_value(master_data_dict):
                             # Create a text input in Streamlit
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
             
-                
+                st.write(input_values)
+
                 submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
                     
                 if submitted:
