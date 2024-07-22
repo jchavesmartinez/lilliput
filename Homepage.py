@@ -260,8 +260,8 @@ def complete_value(master_data_dict):
 
                             # Create a text input in Streamlit
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
-                            input_values[Synthesis_methods] = st.text_input(label=f"Synthesis_methods", value=variable["Synthesis_methods"], help="variable_description", disabled=True)
-                            input_values[Purification_methods] = st.text_input(label=f"Purification_methods", value=variable["Purification_methods"], help="variable_description", disabled=True)  
+                            input_values["Synthesis_methods"] = st.text_input(label=f"Synthesis_methods", value=variable["Synthesis_methods"], help="variable_description", disabled=True)
+                            input_values["Purification_methods"] = st.text_input(label=f"Purification_methods", value=variable["Purification_methods"], help="variable_description", disabled=True)  
 
                     elif variable["variable_type"] == "Dependant":
                         variable_name = variable["variable_name"]
