@@ -263,7 +263,7 @@ def complete_value(master_data_dict):
                             #Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
                             
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description, key=variable_name)
-                            #Synthesis_methods = st.text_input("Movie title", "Life of Brian")
+                            Synthesis_methods = st.text_input("Movie title", "Life of Brian")
                             #st.write(Synthesis_methods,Purification_methods)
                             #Purification_methods = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)  
 
