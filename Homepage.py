@@ -250,23 +250,20 @@ def complete_value(master_data_dict):
                 
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
-                        st.write(values_from_dict1['Synthesis_methods'])
                         
                         variable_name = variable["variable_name"]
                         variable_description = variable["variable_description"]
 
                         # Get the corresponding value from dict1
                         value = values_from_dict1.get(variable_name, "")
-                        #Synthesis_methods = values_from_dict1.get(variable["Synthesis_methods"], "")
-                        #Purification_methods = values_from_dict1.get(variable["Purification_methods"], "")
 
                         with col1:
 
                             # Create a text input in Streamlit
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
                             #st.write(Synthesis_methods,Purification_methods)
-                            #Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=variable["Synthesis_methods"], help="variable_description", disabled=True)
-                            #Purification_methods = st.text_input(label=f"Purification_methods", value=variable["Purification_methods"], help="variable_description", disabled=True)  
+                            Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True)
+                            Purification_methods = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)  
 
                     elif variable["variable_type"] == "Dependant":
                         variable_name = variable["variable_name"]
