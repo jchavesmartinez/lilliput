@@ -152,7 +152,7 @@ def new_value(master_data_dict):
 
         synthesis_methods = st.selectbox(
             "Synthesis methods",
-            ("Hydrothermal", "Microwave"))
+            ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
 
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
@@ -170,7 +170,7 @@ def new_value(master_data_dict):
 
         purification_methods = st.selectbox(
             "Purification Methods",
-            ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select contact method...")
+            ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select purification method...")
         
                
         submitted = st.form_submit_button("Submit form", use_container_width=True)
