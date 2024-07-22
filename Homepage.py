@@ -147,26 +147,26 @@ def new_value(master_data_dict):
     
     st.write(synthesis_methods)
 
-    with st.form("my_form", clear_on_submit=True):
-        timestamp = int(time.time())
-        timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
-        barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
-        barcode = str(barcode).split("'")[0]
-        image = Image.open(barcode_path)
+    if synthesis_methods:
 
-        st.image(image, caption='Generated Barcode')
+        with st.form("my_form", clear_on_submit=True):
+            timestamp = int(time.time())
+            timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
+            barcode_path, barcode, pdf_bytes = generate_barcode(timestamp_str)
+            barcode = str(barcode).split("'")[0]
+            image = Image.open(barcode_path)
 
-        if 'barcode' not in st.session_state:
-            st.session_state['barcode'] = barcode
-        if 'pdf_bytes' not in st.session_state:
-            st.session_state['pdf_bytes'] = pdf_bytes
+            st.image(image, caption='Generated Barcode')
 
-        variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+            if 'barcode' not in st.session_state:
+                st.session_state['barcode'] = barcode
+            if 'pdf_bytes' not in st.session_state:
+                st.session_state['pdf_bytes'] = pdf_bytes
 
-        responses = {}
-        
-        if synthesis_methods:
+            variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
+            responses = {}
+            
             # Iterate over variables and create a text input for each
             for i in variables:
                 if i['variable_type']=='Independant':
@@ -175,9 +175,9 @@ def new_value(master_data_dict):
             purification_methods = st.selectbox(
                 "Purification Methods",
                 ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select purification method...")
-        
-               
-        submitted = st.form_submit_button("Submit form", use_container_width=True)
+            
+                
+            submitted = st.form_submit_button("Submit form", use_container_width=True)
 
     if submitted:
 
