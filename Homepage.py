@@ -147,8 +147,6 @@ def new_value(master_data_dict):
     
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-    st.write(variables)
-
     if synthesis_methods:
 
         with st.form("my_form", clear_on_submit=True):
@@ -170,6 +168,7 @@ def new_value(master_data_dict):
             # Iterate over variables and create a text input for each
             for i in variables:
                 if i['variable_type']=='Independant': # and synthesis_methods in i["synthesis_methods"]:
+                    st.write(i['variable_type'])
                     responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
             purification_methods = st.selectbox(
