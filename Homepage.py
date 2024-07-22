@@ -177,21 +177,21 @@ def new_value(master_data_dict):
               
             submitted = st.form_submit_button("Submit form", use_container_width=True)
         
+        if submitted:
+
+            file_id=upload_to_google_drive(st.session_state.pdf_bytes, st.session_state.barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
+            file_id="https://drive.google.com/file/d/"+str(file_id)
+
+            responses['file']=file_id
+            responses['barcode']=st.session_state.barcode
+            master_data_dict.append(responses)
+            update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
+            st.session_state['barcode'] = barcode
+            st.rerun()
+
     else:
         st.write("No synthesis method has been selected ")
 
-
-    if submitted:
-
-        file_id=upload_to_google_drive(st.session_state.pdf_bytes, st.session_state.barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
-        file_id="https://drive.google.com/file/d/"+str(file_id)
-
-        responses['file']=file_id
-        responses['barcode']=st.session_state.barcode
-        master_data_dict.append(responses)
-        update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
-        st.session_state['barcode'] = barcode
-        st.rerun()
 
 def update_text_file(credentials, folder_id, file_id, file_name, new_content):
     try:
