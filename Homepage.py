@@ -251,7 +251,7 @@ def complete_value(master_data_dict):
 
                 with col1:
                     Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
-                    input_values[Purification_methods] = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)
+                    input_values["Purification_methods"] = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)
 
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
