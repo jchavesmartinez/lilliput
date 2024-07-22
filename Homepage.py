@@ -193,7 +193,6 @@ def new_value(master_data_dict):
     else:
         st.write("No synthesis method has been selected ")
 
-
 def update_text_file(credentials, folder_id, file_id, file_name, new_content):
     try:
         print("Empezando a subir a Google Drive")
@@ -263,6 +262,8 @@ def complete_value(master_data_dict):
 
                             # Create a text input in Streamlit
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
+                            input_values[Purification_methods] = st.text_input(label=f"Synthesis_methods", value=variable["Synthesis_methods"], help="variable_description", disabled=True)
+                            input_values[Purification_methods] = st.text_input(label=f"Purification_methods", value=variable["Purification_methods"], help="variable_description", disabled=True)  
 
                     elif variable["variable_type"] == "Dependant":
                         variable_name = variable["variable_name"]
