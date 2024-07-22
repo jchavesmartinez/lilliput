@@ -170,7 +170,7 @@ def new_value(master_data_dict):
 
         purification_methods = st.selectbox(
             "Purification Methods",
-            ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"))
+            ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select contact method...")
         
                
         submitted = st.form_submit_button("Submit form", use_container_width=True)
