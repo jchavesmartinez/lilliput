@@ -163,6 +163,8 @@ def new_value(master_data_dict):
             "Synthesis methods",
             ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
         
+        st.write(synthesis_methods)
+        
         if synthesis_methods:
 
             # Iterate over variables and create a text input for each
