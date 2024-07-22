@@ -260,13 +260,8 @@ def complete_value(master_data_dict):
                         with col1:
 
                             # Create a text input in Streamlit
-                            #Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
-                            
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description, key=variable_name)
-                            #st.write(Synthesis_methods,Purification_methods)
-                            #Purification_methods = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)
                   
-
                     elif variable["variable_type"] == "Dependant":
                         variable_name = variable["variable_name"]
                         variable_description = variable["variable_description"]
@@ -281,7 +276,11 @@ def complete_value(master_data_dict):
             
 
                 with col1:
-                    Synthesis_methods = st.text_input("Movie title", "Life of Brian")
+                    Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
+                
+                with col2:
+                    Purification_methods = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)
+
                 
                 submitted = st.form_submit_button("Submit form", use_container_width=True, type="primary")
                     
