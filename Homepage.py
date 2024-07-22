@@ -231,7 +231,7 @@ def update_text_file(credentials, folder_id, file_id, file_name, new_content):
 def complete_value(master_data_dict):
 
     def filter_by_barcode(barcode):
-        return [entry for entry in master_data_dict if entry["barcode"] == barcode]
+        return [entry for entry in master_data_dict if entry["Barcode"] == barcode]
 
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
     
@@ -283,7 +283,7 @@ def complete_value(master_data_dict):
                     input_values = {k: v for k, v in input_values.items() if v != ""}
 
                     for entry in master_data_dict:
-                        if entry["barcode"] == search_barcode_form:
+                        if entry["Barcode"] == search_barcode_form:
                             entry.update(input_values)
                         
                     update_text_file(credentials, '1Qz4keZrXh8jufcqKG0bN1aj-QycKZ-iR', '1DI-ZNSX88hmbdGW8-Nb1fOKIsTHyEEOU', 'cr_streamlit_prod.inventory_management.master_data', master_data_dict)
