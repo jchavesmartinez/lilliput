@@ -401,7 +401,7 @@ if st.button("Update a value (dependent variables)", use_container_width=True):
     complete_value(master_data_dict)
 
 
-search_barcode = st.text_input("Search by barcode")
+search_barcode = st.text_input("Search by barcode", "")
 
 try:
     # Filter the dataframe based on the input
