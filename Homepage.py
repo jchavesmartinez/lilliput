@@ -178,7 +178,8 @@ def new_value(master_data_dict):
             submitted = st.form_submit_button("Submit form", use_container_width=True)
         
     else:
-        st.write("No synthesis method has been selected")
+        st.write("No synthesis method has been selected ")
+
 
     if submitted:
 
