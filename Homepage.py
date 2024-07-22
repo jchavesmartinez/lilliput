@@ -418,7 +418,7 @@ except:
 
 
 try:
-    cols_to_move = ['barcode', 'file']
+    cols_to_move = ['Barcode', 'File']
 
     # Reorder the columns
     cols = cols_to_move + [col for col in filtered_df.columns if col not in cols_to_move]
