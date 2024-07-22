@@ -151,8 +151,8 @@ def new_value(master_data_dict):
         st.image(image, caption='Generated Barcode')
 
         option = st.selectbox(
-            "How would you like to be contacted?",
-            ("Email", "Home phone", "Mobile phone"))
+            "Synthesis methods",
+            ("Hydrothermal", "Microwave"))
 
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
