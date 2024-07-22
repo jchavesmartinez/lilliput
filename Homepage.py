@@ -140,7 +140,13 @@ def generate_barcode(number, dpi=600):
 
 @st.experimental_dialog("New experiment")
 def new_value(master_data_dict):
+
+    synthesis_methods = st.selectbox(
+        "Synthesis methods",
+        ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
     
+    st.write(synthesis_methods)
+
     with st.form("my_form", clear_on_submit=True):
         timestamp = int(time.time())
         timestamp_str = str(timestamp).zfill(12)  # Pad the timestamp to ensure it's 12 digits
@@ -158,12 +164,6 @@ def new_value(master_data_dict):
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
         responses = {}
-
-        synthesis_methods = st.selectbox(
-            "Synthesis methods",
-            ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
-        
-        st.write(synthesis_methods)
         
         if synthesis_methods:
 
