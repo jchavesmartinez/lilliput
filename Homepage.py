@@ -145,7 +145,9 @@ def new_value(master_data_dict):
         "Synthesis methods",
         ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
     
-    
+    variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+
+    st.write(variables['variable_name'])
 
     if synthesis_methods:
 
@@ -163,12 +165,12 @@ def new_value(master_data_dict):
             if 'pdf_bytes' not in st.session_state:
                 st.session_state['pdf_bytes'] = pdf_bytes
 
-            variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
+            
 
             responses = {}
             st.write(synthesis_methods)
 
-            st.write(variables['variable_name'])
+            
 
             # Iterate over variables and create a text input for each
             for i in variables:
