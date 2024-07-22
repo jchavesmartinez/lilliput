@@ -260,7 +260,8 @@ def complete_value(master_data_dict):
                         with col1:
 
                             # Create a text input in Streamlit
-                            Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
+                            #Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
+                            Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=10, help="variable_description", disabled=True)
                             input_values[variable_name] = st.text_input(label=f"{variable_name}", value=value, help=variable_description)
                             #st.write(Synthesis_methods,Purification_methods)
                             #Purification_methods = st.text_input(label=f"Purification_methods", value=values_from_dict1['Purification_methods'], help="variable_description", disabled=True)  
