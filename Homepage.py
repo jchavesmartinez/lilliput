@@ -150,10 +150,6 @@ def new_value(master_data_dict):
 
         st.image(image, caption='Generated Barcode')
 
-        synthesis_methods = st.selectbox(
-            "Synthesis methods",
-            ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
-
         if 'barcode' not in st.session_state:
             st.session_state['barcode'] = barcode
         if 'pdf_bytes' not in st.session_state:
@@ -162,6 +158,10 @@ def new_value(master_data_dict):
         variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
         responses = {}
+
+        synthesis_methods = st.selectbox(
+            "Synthesis methods",
+            ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
 
         # Iterate over variables and create a text input for each
         for i in variables:
