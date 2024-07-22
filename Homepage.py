@@ -181,7 +181,6 @@ def new_value(master_data_dict):
 
             file_id=upload_to_google_drive(st.session_state.pdf_bytes, st.session_state.barcode, '1reoksQe_LScoGunjAbHmLnCtu3BpjPML', credentials)
             file_id="https://drive.google.com/file/d/"+str(file_id)
-
             responses['Synthesis_methods']=synthesis_methods
             responses['Purification_methods']=purification_methods
             responses['File']=file_id
@@ -427,7 +426,7 @@ try:
 
     master_data_df_edit = st.data_editor(filtered_df, num_rows="fixed", hide_index=True, use_container_width=True,
         column_config={
-            "file": st.column_config.LinkColumn(
+            "File": st.column_config.LinkColumn(
                 "Barcode file", display_text="Open PDF"
             ),
         })
