@@ -145,7 +145,7 @@ def new_value(master_data_dict):
         "Synthesis methods",
         ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
     
-    st.write(synthesis_methods)
+    
 
     if synthesis_methods:
 
@@ -166,7 +166,8 @@ def new_value(master_data_dict):
             variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
             responses = {}
-            
+            st.write(synthesis_methods)
+
             # Iterate over variables and create a text input for each
             for i in variables:
                 if i['variable_type']=='Independant' and synthesis_methods in i["synthesis_methods"]:
