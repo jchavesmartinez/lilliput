@@ -243,6 +243,8 @@ def complete_value(master_data_dict):
 
         if filtered_data:
             
+            st.write(filtered_data)
+            
             with st.form("my_form", clear_on_submit=False):
                 values_from_dict1 = filtered_data[0]
 
