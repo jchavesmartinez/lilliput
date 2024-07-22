@@ -147,7 +147,7 @@ def new_value(master_data_dict):
     
     variables = read_file_googledrive(credentials,'1k-Gnh-xUFUXej14D6ABMhGeGe8dXGxyT')
 
-    st.write(variables)
+    st.write(variables["variable_name"])
 
     if synthesis_methods:
 
@@ -164,10 +164,8 @@ def new_value(master_data_dict):
                 st.session_state['barcode'] = barcode
             if 'pdf_bytes' not in st.session_state:
                 st.session_state['pdf_bytes'] = pdf_bytes
-
             
             responses = {}
-            st.write(synthesis_methods["variable_name"])
 
             # Iterate over variables and create a text input for each
             for i in variables:
