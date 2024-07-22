@@ -250,7 +250,7 @@ def complete_value(master_data_dict):
                 
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
-                        st.write(values_from_dict1)
+                        st.write(values_from_dict1['Synthesis_methods'])
                         
                         variable_name = variable["variable_name"]
                         variable_description = variable["variable_description"]
