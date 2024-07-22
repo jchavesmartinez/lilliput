@@ -255,7 +255,14 @@ def complete_value(master_data_dict):
                 elif values_from_dict1['Purification_methods'] == "Filter 0.2 um + Ultracentrifugation+ dialysis":
                     index=2
                 
+
+                if values_from_dict1['Synthesis_methods'] == "Hydrothermal":
+                    index2=0
+                elif values_from_dict1['Synthesis_methods'] == "Microwave":
+                    index2=1
+
                 with col1:
+                    input_values["Synthesis_methods"] = st.selectbox("Synthesis Methods",("Hydrothermal","Microwave"),index=index2)
                     Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
                     input_values["Purification_methods"] = st.selectbox("Purification Methods",("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=index)
 
