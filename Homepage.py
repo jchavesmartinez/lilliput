@@ -253,8 +253,6 @@ def complete_value(master_data_dict):
                     Synthesis_methods = st.text_input(label=f"Synthesis_methods", value=values_from_dict1['Synthesis_methods'], help="variable_description", disabled=True, key="Synthesis_methods")
                     input_values["Purification_methods"] = st.selectbox("Purification Methods",("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"), value=values_from_dict1['Purification_methods'])
 
-
-
                 for variable in variables:
                     if variable["variable_type"] == "Independant":
                         
