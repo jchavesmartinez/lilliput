@@ -166,11 +166,8 @@ def new_value(master_data_dict):
                 st.session_state['pdf_bytes'] = pdf_bytes
 
             
-
             responses = {}
             st.write(synthesis_methods)
-
-            
 
             # Iterate over variables and create a text input for each
             for i in variables:
