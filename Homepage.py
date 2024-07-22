@@ -150,7 +150,7 @@ def new_value(master_data_dict):
 
         st.image(image, caption='Generated Barcode')
 
-        option = st.selectbox(
+        synthesis_methods = st.selectbox(
             "Synthesis methods",
             ("Hydrothermal", "Microwave"))
 
@@ -167,6 +167,10 @@ def new_value(master_data_dict):
         for i in variables:
             if i['variable_type']=='Independant':
                 responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+
+        purification_methods = st.selectbox(
+            "Purification Methods",
+            ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"))
         
                
         submitted = st.form_submit_button("Submit form", use_container_width=True)
