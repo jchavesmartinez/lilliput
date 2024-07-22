@@ -162,15 +162,17 @@ def new_value(master_data_dict):
         synthesis_methods = st.selectbox(
             "Synthesis methods",
             ("Hydrothermal", "Microwave"),index=None,placeholder="Select synthesis method...")
+        
+        if synthesis_methods:
 
-        # Iterate over variables and create a text input for each
-        for i in variables:
-            if i['variable_type']=='Independant':
-                responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
+            # Iterate over variables and create a text input for each
+            for i in variables:
+                if i['variable_type']=='Independant':
+                    responses[i["variable_name"]] = st.text_input(i["variable_name"], "" , key=i["variable_name"])
 
-        purification_methods = st.selectbox(
-            "Purification Methods",
-            ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select purification method...")
+            purification_methods = st.selectbox(
+                "Purification Methods",
+                ("Filter 0.2 um", "Filter 0.2 um + Ultracentrifugation", "Filter 0.2 um + Ultracentrifugation+ dialysis"),index=None,placeholder="Select purification method...")
         
                
         submitted = st.form_submit_button("Submit form", use_container_width=True)
